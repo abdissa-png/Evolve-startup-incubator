@@ -16,6 +16,7 @@
 <li>Startups can create,update or delete their profile.</li>
 <li>In their profile startups will give a description of their business and needs etc</li>
 <li>Startups can search for investors who are willing to provide for their needs and they can give their ideas to this investors and if these investors liked their idea they could be paired and work together.</li>
+<li> startups can see startups funded by specific investor so far under investor's profile.</li>
 <li>Investors can create,update,delete their profiles.</li>
 <li>In their profiles investors can include their information and describe in what area they would like to give assistance to startups(E.g. Mentoring,providing resources,funding,legal assistance etc)</li>
 <li>Investors can search for potential startups that they can help
