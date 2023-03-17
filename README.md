@@ -9,7 +9,7 @@
 
 ---
 ## Title of the project
-<b>Startup incubator app</b>
+<p>Startup incubator app</p>
 ---
 
 ## About the app
