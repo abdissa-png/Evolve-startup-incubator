@@ -24,6 +24,7 @@
 ## App-features
 <ul>
 <li>There will be three types of users investors, startups,and admin</li>
+<li>The app will support authentication and authorization of all users in the system</li>
 <li>Startups can create,update or delete their profile.</li>
 <li>In their profile startups will give a description of their business and needs etc</li>
 <li>Startups can search for investors who are willing to provide for their needs and they can give their ideas to this investors and if these investors liked their idea they could be paired and work together.</li>
