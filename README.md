@@ -1,4 +1,4 @@
-<b align="center">Group Members</b>
+## Group Members
 |Name|ID|Section|
 |:-|:-|:-|
 |Abdissa Degefu|UGR/8187/13|4|
@@ -7,11 +7,15 @@
 |Mentesnot Sibatu|UGR/3332/13|3|
 |Tadael Shewarega|UGR/1044/13|4|
 
-<b align="center">About the app</b>
+---
+
+## About the app
 
 <p>We will be building a Startup incubator app.This app will help facilitate the process of connecting startups with investors.</p>
 
-<b align="center">App-features<b>
+---
+
+## App-features
 <ul>
 <li>There will be three types of users investors, startups,and admin</li>
 <li>Startups can create,update or delete their profile.</li>
