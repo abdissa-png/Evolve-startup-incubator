@@ -8,8 +8,11 @@
 |Tadael Shewarega|UGR/1044/13|4|
 
 ---
+
 ## Title of the project
-<p>Startup incubator app</p>
+
+<p>Startup incubator app.</p>
+
 ---
 
 ## About the app
