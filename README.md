@@ -3,6 +3,7 @@
 |:-|:-|:-|
 |Abdissa Degefu|UGR/8187/13|4|
 |Abdurahman Mohammed|UGR/7334/13|4|
+|Ebissa Chemeda|UGR/1032/13/3
 |Mentesnot Sibatu|UGR/3332/13|3|
 |Tadael Shewarega|UGR/1044/13|4|
 
