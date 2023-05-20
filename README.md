@@ -1,41 +1,73 @@
-## Group Members
-|Name|ID|Section|
-|:-|:-|:-|
-|Abdissa Degefu|UGR/8187/13|4|
-|Abdurahman Mohammed|UGR/7334/13|4|
-|Ebissa Chemeda|UGR/1032/13|3|
-|Mentesnot Sibatu|UGR/3332/13|3|
-|Tadael Shewarega|UGR/1044/13|4|
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+</p>
 
----
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-## Title of the project
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-<p>Startup incubator app.</p>
+## Description
 
----
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## About the app
+## Installation
 
-<p>We will be building a Startup incubator app.This app will help facilitate the process of connecting startups with investors.</p>
+```bash
+$ yarn install
+```
 
----
+## Running the app
 
-## App-features
-<ul>
-<li>There will be three types of users investors, startups,and admin</li>
-<li>The app will support authentication and authorization of all users in the system</li>
-<li>Startups can create,update or delete their profile.</li>
-<li>In their profile startups will give a description of their business and needs etc</li>
-<li>Startups can search for investors who are willing to provide for their needs and they can give their ideas to this investors and if these investors liked their idea they could be paired and work together.</li>
-<li>Startups can see which startups have been funded by a specific investor so far.</li>
-<li>Investors can create,update,delete their profiles.</li>
-<li>In their profiles investors can include their information and describe in what area they would like to give assistance to startups(E.g. Mentoring,providing resources,funding,legal assistance etc)</li>
-<li>Investors can search for potential startups that they can help
-and request them so that they can work together.</li>
-<li>Both investors and startups can give their complaints to the system</li>
-<li>Both investors and startups can get informations and events that could help for their work which are provided by the system.</li>
-<li>Admin can remove users(startups and investors) from the system.</li>
-<li>Admin also accepts the complaints from users(startups and investors) and respond accordingly.</li>
-<li>Admin can also post about events such as startup events or conventions and informations which are relevant to the users.</li>
-</ul>
+```bash
+# development
+$ yarn run start
+
+# watch mode
+$ yarn run start:dev
+
+# production mode
+$ yarn run start:prod
+```
+
+## Test
+
+```bash
+# unit tests
+$ yarn run test
+
+# e2e tests
+$ yarn run test:e2e
+
+# test coverage
+$ yarn run test:cov
+```
+
+## Support
+
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+
+## Stay in touch
+
+- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
+
+## License
+
+Nest is [MIT licensed](LICENSE).
