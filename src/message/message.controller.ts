@@ -20,6 +20,8 @@ export class MessageController {
     async postAnnouncement(@Body() dto:AnnouncementDto){
         this.messageService.postAnnouncement(dto)
     }
+    @Roles(UserRole.INVESTOR,UserRole.STARTUP)
+    @UseGuards(RolesGuard)
     @Post("submitComplaint")
     @HttpCode(HttpStatus.OK)
     async submitComplaint(@GetCurrentUser("email") email:string,@Body("message") message:string){
@@ -31,10 +33,17 @@ export class MessageController {
     async receiveComplaint(@Body() dto:ComplaintDto){
         this.messageService.replyToComplaint(dto)
     }
-
+    @Roles(UserRole.INVESTOR,UserRole.STARTUP)
+    @UseGuards(RolesGuard)
     @Get("announcement")
     async getAnnouncements(@GetCurrentUser("email") email:string){
         return this.messageService.getAnnouncements(email);
+    }
+    @Roles(UserRole.ADMIN)
+    @UseGuards(RolesGuard)
+    @Get("posts")
+    async getPosts(){
+        return this.messageService.getPosts();
     }
     @Roles(UserRole.ADMIN)
     @UseGuards(RolesGuard)

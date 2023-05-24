@@ -137,12 +137,12 @@ export class AuthService {
             user:newUser
         })
         const savedUser=await this.userRepository.save(newUser).catch((error)=>{
-            console.error(error)
+            // console.error(error)
             throw new HttpException("Internal Server Error",HttpStatus.INTERNAL_SERVER_ERROR);
         });
         newStartupProfile.user=savedUser
         const savedStartup=await this.startupRepository.save(newStartupProfile).catch((error)=>{
-            console.error(error)
+            // console.error(error)
             throw new HttpException("Internal Server Error",HttpStatus.INTERNAL_SERVER_ERROR);
         });
         const tokens=await this.getTokens(newUser.id,newUser.email,newUser.role.role)
@@ -180,12 +180,12 @@ export class AuthService {
             user:newUser
         });
         const savedUser=await this.userRepository.save(newUser).catch((error)=>{
-            console.error(error)
+            // console.error(error)
             throw new HttpException("Internal Server Error",HttpStatus.INTERNAL_SERVER_ERROR);
         });
         newInvestorProfile.user=savedUser;
         const savedInvestor=await this.investorRepository.save(newInvestorProfile).catch((error)=>{
-            console.error(error)
+            // console.error(error)
             throw new HttpException("Internal Server Error",HttpStatus.INTERNAL_SERVER_ERROR);
         });
         const tokens=await this.getTokens(newUser.id,newUser.email,newUser.role.role)

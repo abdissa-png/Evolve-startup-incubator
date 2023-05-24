@@ -13,4 +13,6 @@ export class Pairing{
   investor:string;
   @Column()
   status:string;
+  @Column()
+  requestFrom:string;
 }

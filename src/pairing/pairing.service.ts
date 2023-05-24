@@ -28,14 +28,14 @@ export class PairingService {
         if (role==UserRole.STARTUP){
             const pairing=await this.pairingRepository.
                                     createQueryBuilder("pairing").
-                                    where("paring.startup=:value",{email}).
+                                    where("pairing.startup=:email",{email}).
                                     andWhere("pairing.status !='pending'").
                                     getMany();
             return pairing
         }else if(role==UserRole.INVESTOR){
             const pairing=await this.pairingRepository.
                                     createQueryBuilder("pairing").
-                                    where("paring.investor=:value",{email}).
+                                    where("pairing.investor=:email",{email}).
                                     andWhere("pairing.status !='pending'").
                                     getMany();
             return pairing
@@ -45,15 +45,17 @@ export class PairingService {
         if (role==UserRole.STARTUP){
             const pairing=await this.pairingRepository.
                                     createQueryBuilder("pairing").
-                                    where("paring.startup=:value",{email}).
+                                    where("pairing.startup=:email",{email}).
                                     andWhere("pairing.status ='pending'").
+                                    andWhere("pairing.requestFrom='investor'").
                                     getMany();
             return pairing
         }else if(role==UserRole.INVESTOR){
             const pairing=await this.pairingRepository.
                                     createQueryBuilder("pairing").
-                                    where("paring.investor=:value",{email}).
+                                    where("pairing.investor=:email",{email}).
                                     andWhere("pairing.status ='pending'").
+                                    andWhere("pairing.requestFrom='startup'").
                                     getMany();
             return pairing
         }
@@ -74,17 +76,43 @@ export class PairingService {
         return investors;   
     }
     async requestStartup(investorEmail: string, email: string) {
-        await this.pairingRepository.save({
-            startup:email,
-            investor:investorEmail,
-            status:PairingStatus.PENDING
-        })
+        const pairing=await this.pairingRepository.findOne({where:{investor:investorEmail,startup:email}})
+        if (pairing){
+            await this.pairingRepository.save({
+                id:pairing.id,
+                startup:email,
+                investor:investorEmail,
+                status:PairingStatus.PENDING,
+                requestFrom:UserRole.INVESTOR
+            })
+        }else{
+            await this.pairingRepository.save({
+                startup:email,
+                investor:investorEmail,
+                status:PairingStatus.PENDING,
+                requestFrom:UserRole.INVESTOR
+            })
+        }
     }
     async requestInvestor(startupEmail: string, email: string) {
+        const pairing=await this.pairingRepository.findOne({where:{investor:email,startup:startupEmail}})
+        if(pairing){
         await this.pairingRepository.save({
+            id:pairing.id,
             startup:startupEmail,
             investor:email,
-            status:PairingStatus.PENDING
+            status:PairingStatus.PENDING,
+            requestFrom:UserRole.STARTUP
+
         })
+        }else{
+            await this.pairingRepository.save({
+                startup:startupEmail,
+                investor:email,
+                status:PairingStatus.PENDING,
+                requestFrom:UserRole.STARTUP
+    
+            })
+        }
     }
 }

@@ -46,6 +46,15 @@ export class MessageService {
                             .getMany();
         return messages;
     }
+    async getPosts(){
+        const messages = await this.messageRepository
+                                .createQueryBuilder('message')
+                                .where('message.to = :to', {
+                                        to: 'All'
+                            })
+                            .getMany();
+        return messages;
+    }
     async getComplaint(){
         const complaint=await this.messageRepository.find({where:{to:UserRole.ADMIN}})
         return complaint;
