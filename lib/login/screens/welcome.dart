@@ -11,8 +11,8 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
-      Navigator.pushReplacementNamed(context, '/login');
+    Timer(Duration(seconds: 3), () {
+//       Navigator.pushReplacementNamed(context, '/login');
     });
   }
 
