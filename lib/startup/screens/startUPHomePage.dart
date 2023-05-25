@@ -16,11 +16,17 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _model = createModel(context, () => StartUpHomePageModel());
-  // }
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () =>StartUpHomePageModel());
+  }
+   StartUpHomePageModel createModel(BuildContext context, dynamic creator) {
+    // Implement your createModel logic here
+    // You can customize the logic based on your requirements
+    return creator();
+  }
 
   @override
   void dispose() {
@@ -34,6 +40,8 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
+         key: scaffoldKey,
+        
         backgroundColor: Colors.white,
         drawer: Drawer(
           elevation: 16,
@@ -145,9 +153,16 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(80),
           child: AppBar(
+            leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () {
+            // TODO: Add logic to open drawer
+            scaffoldKey.currentState!.openDrawer();
+          },
+        ),
             automaticallyImplyLeading: false,
             title: Text(
-              'Hello, Investor',
+              'Hello, startUp',
               style: TextStyle(
                 fontFamily: 'Poppins',
                 color: Colors.white,
@@ -269,7 +284,7 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
                                   ),
                                   ListTile(
                                     title: Text(
-                                      'investor 3',
+                                      'insvestor 3',
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold),
