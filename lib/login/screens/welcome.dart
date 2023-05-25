@@ -35,7 +35,7 @@ class _WelcomePageState extends State<WelcomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/investor.png',
+                'assets/logo.png',
                 width: 250,
                 height: 250,
               ),
