@@ -16,6 +16,7 @@ class _InvestorhomepageWidgetState extends State<InvestorhomepageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final _unfocusNode = FocusNode();
 
+
   // @override
   // void initState() {
   //   super.initState();
@@ -34,6 +35,8 @@ class _InvestorhomepageWidgetState extends State<InvestorhomepageWidget> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
       child: Scaffold(
+         key: scaffoldKey,
+        
         backgroundColor: Colors.white,
         drawer: Drawer(
           elevation: 16,
@@ -145,6 +148,13 @@ class _InvestorhomepageWidgetState extends State<InvestorhomepageWidget> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(80),
           child: AppBar(
+            leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () {
+            // TODO: Add logic to open drawer
+            scaffoldKey.currentState!.openDrawer();
+          },
+        ),
             automaticallyImplyLeading: false,
             title: Text(
               'Hello, Investor',
