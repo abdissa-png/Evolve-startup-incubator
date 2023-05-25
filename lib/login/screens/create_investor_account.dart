@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './models/create_investor_model.dart';
+import '../models/create_investor_model.dart';
 
 class CreateInvestorAccountPage extends StatefulWidget {
   @override
