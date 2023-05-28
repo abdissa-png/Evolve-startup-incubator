@@ -1,9 +1,8 @@
-
 import 'package:flutter/material.dart';
 
-
-class SubmitcomplaintModel{
+class SubmitcomplaintModel {
   late String complaint;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -20,5 +19,4 @@ class SubmitcomplaintModel{
   }
 
   /// Additional helper methods are added here.
-
 }

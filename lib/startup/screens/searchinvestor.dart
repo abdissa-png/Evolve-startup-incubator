@@ -1,22 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(SearchInvestorApp());
-}
-
-class SearchInvestorApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Search Investor App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: SearchInvestorScreen(),
-    );
-  }
-}
+import '../models/searchInvestorModel.dart';
 
 class SearchInvestorScreen extends StatefulWidget {
   @override
@@ -24,19 +8,19 @@ class SearchInvestorScreen extends StatefulWidget {
 }
 
 class _SearchInvestorScreenState extends State<SearchInvestorScreen> {
-  List<Investor> investors = [
-    Investor('John Doe', '123-456-7890'),
-    Investor('Jane Smith', '987-654-3210'),
-    Investor('Mike Johnson', '555-555-5555'),
+  List<searchInvestor> investors = [
+    searchInvestor(title: 'John Doe', message: '123-456-7890'),
+    searchInvestor(title: 'Jane Smith', message: '987-654-3210'),
+    searchInvestor(title: 'Mike Johnson', message: '555-555-5555'),
   ];
 
-  List<Investor> searchResults = [];
+  List<searchInvestor> searchResults = [];
 
   void searchInvestors(String query) {
     setState(() {
       searchResults = investors
           .where((investor) =>
-              investor.name.toLowerCase().contains(query.toLowerCase()))
+              investor.title.toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
   }
@@ -44,15 +28,13 @@ class _SearchInvestorScreenState extends State<SearchInvestorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 85, 177, 252), 
+        backgroundColor: Color.fromARGB(255, 85, 177, 252),
         title: Text('Search Investor'),
       ),
       body: Column(
         children: [
           Padding(
-            
             padding: EdgeInsets.all(16.0),
             child: TextField(
               onChanged: searchInvestors,
@@ -70,8 +52,9 @@ class _SearchInvestorScreenState extends State<SearchInvestorScreen> {
               itemCount: searchResults.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(searchResults[index].name),
-                  subtitle: Text('Phone Number: ${searchResults[index].phoneNumber}'),
+                  title: Text(searchResults[index].title),
+                  subtitle:
+                      Text('Phone Number: ${searchResults[index].message}'),
                 );
               },
             ),
@@ -81,12 +64,3 @@ class _SearchInvestorScreenState extends State<SearchInvestorScreen> {
     );
   }
 }
-
-class Investor {
-  final String name;
-  final String phoneNumber;
-
-  Investor(this.name, this.phoneNumber);
-}
-
-

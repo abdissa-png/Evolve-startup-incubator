@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/investorprofileModel.dart';
-export '../models/investorprofileModel.dart';
 
 class InvestorProfileWidget extends StatefulWidget {
   const InvestorProfileWidget({super.key});
@@ -10,9 +9,7 @@ class InvestorProfileWidget extends StatefulWidget {
 }
 
 class _InvestorProfileWidgetState extends State<InvestorProfileWidget> {
-
-
-InvestorProfileModel investorProfileModel = InvestorProfileModel();
+  InvestorProfileModel investorProfileModel = InvestorProfileModel();
 
   final _formkey = GlobalKey<FormState>();
 
@@ -108,8 +105,8 @@ InvestorProfileModel investorProfileModel = InvestorProfileModel();
                     validator: (val) {
                       if (val == null || val.isEmpty) {
                         return 'Field required!';
-                      } null;
-                        
+                      }
+                      null;
                     },
                     controller: _DesController,
                     maxLines: 15,
@@ -236,12 +233,11 @@ InvestorProfileModel investorProfileModel = InvestorProfileModel();
                               investorProfileModel.legal = _legal!;
                               investorProfileModel.other = _other!;
                               investorProfileModel.name = _nameController.text!;
-                              investorProfileModel.description = _DesController.text!;
+                              investorProfileModel.description =
+                                  _DesController.text!;
                               investorProfileModel.phone = _phone!;
-                              print('name: ${investorProfileModel.name } des: ${investorProfileModel.description } phone: ${investorProfileModel.phone } bools: ${investorProfileModel.early }');
-
-
-
+                              print(
+                                  'name: ${investorProfileModel.name} des: ${investorProfileModel.description} phone: ${investorProfileModel.phone} bools: ${investorProfileModel.early}');
                             } else
                               null;
                           },

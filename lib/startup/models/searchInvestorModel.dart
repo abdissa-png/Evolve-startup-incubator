@@ -1,6 +1,6 @@
-class searchInvestors {
+class searchInvestor {
   String title;
   String message;
 
-  searchInvestors({required this.title, required this.message});
+  searchInvestor({required this.title, required this.message});
 }

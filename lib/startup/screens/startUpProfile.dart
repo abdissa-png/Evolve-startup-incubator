@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/startUpProfileModel.dart';
+
 class startUpProfile extends StatefulWidget {
   @override
   _startUpProfileState createState() => _startUpProfileState();
@@ -78,7 +79,7 @@ class _startUpProfileState extends State<startUpProfile> {
                     description = value;
                   });
                 },
-                 maxLines: 5,
+                maxLines: 5,
                 decoration: InputDecoration(
                   labelText: 'Description of Yourself',
                 ),
@@ -175,28 +176,20 @@ class _startUpProfileState extends State<startUpProfile> {
               ),
               SizedBox(height: 16.0),
               Center(
-      child: ElevatedButton(
-        onPressed: () {
-         
-        },
-        style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0), 
-          textStyle: TextStyle(fontSize: 18.0), 
-        ),
-        child: Text('Create Account'),
-  ),
-),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
+                    textStyle: TextStyle(fontSize: 18.0),
+                  ),
+                  child: Text('Create Account'),
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: startUpProfile(),
-  ));
 }

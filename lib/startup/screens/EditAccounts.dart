@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/EditAccountsModel.dart';
-export '../models/EditAccountsModel.dart';
-
 
 class EditAccountWidget extends StatefulWidget {
   @override
@@ -85,8 +83,7 @@ class _EditAccountWidgetState extends State<EditAccountWidget> {
               decoration: InputDecoration(
                 labelText: 'Re-enter New Password',
                 suffixIcon: InkWell(
-                  onTap: () =>
-                      setState(() => obscureConfirm = !obscureConfirm),
+                  onTap: () => setState(() => obscureConfirm = !obscureConfirm),
                   child: Icon(obscureConfirm
                       ? Icons.visibility_outlined
                       : Icons.visibility_off_outlined),
@@ -110,35 +107,25 @@ class _EditAccountWidgetState extends State<EditAccountWidget> {
             ),
             SizedBox(height: 16),
             ElevatedButton(
-  onPressed: () {
-    if (newPassController.text == confirmPassController.text) {
-      // Change password logic here
-    } else {
-      setState(() {
-        _mismatch = true;
-      });
-    }
-  },
-  child: Text('Submit'),
-),
-SizedBox(height: 16),
-ElevatedButton(
-  onPressed: () {
-    
-  },
-  child: Text('Delete Account'),
-),
-SizedBox(height: 16),
-ElevatedButton(
-  onPressed: () {
-    
-  },
-  child: Text('Change password'),
-),
-],
-),
-),
-);
+              onPressed: () {
+                if (newPassController.text == confirmPassController.text) {
+                  // Change password logic here
+                } else {
+                  setState(() {
+                    _mismatch = true;
+                  });
+                }
+              },
+              child: Text('Change password'),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('Delete Account'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
-}
-

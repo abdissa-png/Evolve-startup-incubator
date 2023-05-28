@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
 class InvestorProfileModel {
-  late  bool funding;
+  late bool funding;
 
   late bool mentoring;
- late  bool legal;
+  late bool legal;
   late bool other;
 
   late bool seed;
@@ -14,5 +13,4 @@ class InvestorProfileModel {
   late String? phone;
   late String name;
   late String description;
-
 }
