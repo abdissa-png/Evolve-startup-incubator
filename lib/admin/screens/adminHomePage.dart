@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:startupincubator/createPost.dart';
 import 'package:startupincubator/viewComplaints.dart';
+import 'createPostModel.dart';
 import 'removeuser.dart';
-
-
 
 void main() {
   runApp(MaterialApp(
@@ -11,7 +10,17 @@ void main() {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final List<Post> posts = [
+    Post(message: 'message'),
+    Post(message: 'message'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,13 +37,11 @@ class MyApp extends StatelessWidget {
                     child: Icon(
                       Icons.login,
                       size: 30.0,
-                    )
-                )
+                    ))
               ],
             ),
           ),
         ),
-
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
@@ -52,26 +59,37 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               ListTile(
-                leading: const Icon(Icons.remove,size: 50,),
+                leading: const Icon(
+                  Icons.remove,
+                  size: 50,
+                ),
                 title: const Text('Remove Users'),
                 onTap: () {
                   // Handle drawer item tap
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>RemoveUser()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => RemoveUser()));
                   // Navigator.pop(context); // Close the drawer
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.create,size: 40,),
+                leading: const Icon(
+                  Icons.create,
+                  size: 40,
+                ),
                 title: const Text('Create Post'),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>CreatePost()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CreatePost()));
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.view_agenda,),
+                leading: const Icon(
+                  Icons.view_agenda,
+                ),
                 title: const Text('Complaints'),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Complaints()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Complaints()));
                 },
               ),
             ],
@@ -84,7 +102,7 @@ class MyApp extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Row(
+                  const Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
@@ -92,21 +110,19 @@ class MyApp extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.w500,
-                            fontFamily: "poppins"
-                        ),
+                            fontFamily: "poppins"),
                       )
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0,10),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                     child: Container(
                       width: 390,
                       height: 147,
-                      decoration: BoxDecoration(
-                          color: Colors.white
-                      ),
+                      decoration: const BoxDecoration(color: Colors.white),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -118,16 +134,16 @@ class MyApp extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Container(
                     width: 390,
                     height: 147,
-                    decoration: const BoxDecoration(
-                        color: Colors.white
-
-                    ),
+                    decoration: const BoxDecoration(color: Colors.white),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -136,21 +152,20 @@ class MyApp extends StatelessWidget {
                         onTap: () async {},
                         child: const Text(
                           'Message',
-
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Container(
                     width: 390,
                     height: 147,
-                    decoration: const BoxDecoration(
-                        color: Colors.white
-
-                    ),
+                    decoration: const BoxDecoration(color: Colors.white),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -159,7 +174,6 @@ class MyApp extends StatelessWidget {
                         onTap: () async {},
                         child: const Text(
                           'Message',
-
                         ),
                       ),
                     ),
