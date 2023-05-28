@@ -11,12 +11,11 @@ class _CreatePostState extends State<CreatePost> {
   final controler = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_rounded),
-            onPressed: (){
+            onPressed: () {
               Navigator.pop(context);
             },
           ),
@@ -24,19 +23,15 @@ class _CreatePostState extends State<CreatePost> {
           backgroundColor: Colors.indigo[700],
           title: const Text("Create Post"),
         ),
-
         body: // Generated code for this TextField Widget...
-        Column(
-          children: [Padding(
+            Column(children: [
+          Padding(
             padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
             child: Container(
-
               child: TextFormField(
                 controller: controler,
-
                 decoration: InputDecoration(
                   labelText: 'Write Post',
-
                   enabledBorder: UnderlineInputBorder(
                     borderSide: const BorderSide(
                       // color: FlutterFlowTheme.of(context).alternate,
@@ -66,34 +61,21 @@ class _CreatePostState extends State<CreatePost> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-
                 maxLines: 15,
-
               ),
-
-
             ),
-
           ),
-
-            SizedBox(
-              width: double.infinity,
-
-              child: ElevatedButton(
-
-                child: const Text(
-                    'Post',
-                  style: TextStyle(
-                    color: Colors.white,
-                    decorationColor: Colors.indigo
-                  ),
-                ),
-                onPressed: () {},
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              child: const Text(
+                'Post',
+                style: TextStyle(
+                    color: Colors.white, decorationColor: Colors.indigo),
               ),
+              onPressed: () {},
             ),
-          ]
-        )
-      ),
-    );
+          ),
+        ]));
   }
 }
