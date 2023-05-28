@@ -14,14 +14,14 @@ export class PairingController {
     }
     @Roles(UserRole.STARTUP)
     @UseGuards(RolesGuard)
-    @Post("requestInvestor")
+    @Post("request/investor")
     @HttpCode(HttpStatus.CREATED)
     async requestInvestor(@GetCurrentUser("email") startupEmail:string,@Body("email") email:string){
         this.pairingService.requestInvestor(startupEmail,email)
     }
     @Roles(UserRole.INVESTOR)
     @UseGuards(RolesGuard)
-    @Post("requestStartup")
+    @Post("request/startup")
     @HttpCode(HttpStatus.CREATED)
     async requestStartup(@GetCurrentUser("email") investorEmail:string,@Body("email")email:string){
         this.pairingService.requestStartup(investorEmail,email)

@@ -71,13 +71,13 @@ export class AuthController {
     }
     @Roles(UserRole.ADMIN)
     @UseGuards(RolesGuard)
-    @Get("searchUser")
+    @Get("search/user")
     async searchUser(@Body("name") name:string){
         return this.authService.searchUser(name)
     }
     @Roles(UserRole.ADMIN)
     @UseGuards(RolesGuard)
-    @Delete("removeUser")
+    @Delete("remove/user")
     @HttpCode(HttpStatus.NO_CONTENT)
     async removeUser(@Body("email") email:string,@Body("role") role:string){
         return this.authService.removeUser(email,role)

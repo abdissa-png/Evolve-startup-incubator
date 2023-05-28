@@ -22,14 +22,14 @@ export class MessageController {
     }
     @Roles(UserRole.INVESTOR,UserRole.STARTUP)
     @UseGuards(RolesGuard)
-    @Post("submitComplaint")
+    @Post("submit/complaint")
     @HttpCode(HttpStatus.OK)
     async submitComplaint(@GetCurrentUser("email") email:string,@Body("message") message:string){
         this.messageService.submitComplaint(email,message)
     }
     @Roles(UserRole.ADMIN)
     @UseGuards(RolesGuard)
-    @Post("replyToComplaint")
+    @Post("reply/complaint")
     async receiveComplaint(@Body() dto:ComplaintDto){
         this.messageService.replyToComplaint(dto)
     }

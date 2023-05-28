@@ -25,7 +25,7 @@ export class StartupController {
     async getProfile(@GetCurrentUser("email") email:string){
         return this.startupService.getProfile(email)
     }
-    @Get("searchStartup")
+    @Get("search/startup")
     async searchStartup(@Body("name") name:string){
         return this.startupService.searchStartup(name)
     }

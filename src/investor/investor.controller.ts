@@ -25,7 +25,7 @@ export class InvestorController {
     async getProfile(@GetCurrentUser("email") email:string){
         return this.startupService.getProfile(email)
     }
-    @Get("searchInvestor")
+    @Get("search")
     async searchInvestor(@Body("name") name:string){
         return this.startupService.searchInvestor(name)
     }
