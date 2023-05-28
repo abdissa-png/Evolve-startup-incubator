@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:startupincubator/userModel.dart';
+import 'package:startupincubator/removeUserModel.dart';
 
 class RemoveUser extends StatefulWidget {
   const RemoveUser({Key? key}) : super(key: key);
@@ -10,10 +10,10 @@ class RemoveUser extends StatefulWidget {
 
 class _RemoveUserState extends State<RemoveUser> {
   final myController = TextEditingController();
-  final List<Item> itemList = [
-    Item(title: 'userName', subtitle: 'Role'),
-    Item(title: 'userName', subtitle: 'Role'),
-    Item(title: 'userName', subtitle: 'Role'),
+  final List<DeleteUser> itemList = [
+    DeleteUser(title: 'userName', subtitle: 'Role'),
+    DeleteUser(title: 'userName', subtitle: 'Role'),
+    DeleteUser(title: 'userName', subtitle: 'Role'),
   ];
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,6 @@ class _RemoveUserState extends State<RemoveUser> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.indigoAccent[700],
-
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back_rounded,
@@ -31,9 +30,8 @@ class _RemoveUserState extends State<RemoveUser> {
             },
           ),
           title: const Text(
-              "Remove User",
+            "Remove User",
             style: TextStyle(),
-
           ),
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(20.0),
@@ -50,32 +48,35 @@ class _RemoveUserState extends State<RemoveUser> {
                   prefixIcon: Icon(Icons.search_outlined),
                   border: InputBorder.none,
                   labelText: "Enter StartUp Name",
-
                 ),
               ),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             const Padding(
               padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 0),
               child: Text(
                 'Startups matching search',
               ),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             Expanded(
               child: ListView.builder(
-                  itemCount: itemList.length,
-                  itemBuilder: (context,index) {
-                    final item=itemList[index];
-                    return ListTile(
-                      title: Text(
-                        item.title,
-                        style: const TextStyle(fontSize: 40),
-                      ),
-                      subtitle: Text(item.subtitle),
-                      trailing: const Icon(Icons.delete),
-                    );
-                  },
+                itemCount: itemList.length,
+                itemBuilder: (context, index) {
+                  final item = itemList[index];
+                  return ListTile(
+                    title: Text(
+                      item.title,
+                      style: const TextStyle(fontSize: 40),
+                    ),
+                    subtitle: Text(item.subtitle),
+                    trailing: const Icon(Icons.delete),
+                  );
+                },
               ),
             ),
           ],
@@ -83,5 +84,4 @@ class _RemoveUserState extends State<RemoveUser> {
       ),
     );
   }
-
 }
