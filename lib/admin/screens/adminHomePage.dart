@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:startupincubator/createPost.dart';
-import 'package:startupincubator/viewComplaints.dart';
-import 'createPostModel.dart';
+import 'createPost.dart';
+import 'viewComplaints.dart';
+import '../models/createPostModel.dart';
 import 'removeuser.dart';
 
 void main() {

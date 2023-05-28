@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:startupincubator/removeUserModel.dart';
+import '../models/removeUserModel.dart';
 
 class RemoveUser extends StatefulWidget {
   const RemoveUser({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'complaintModel.dart';
+import '../models/complaintModel.dart';
 
 class Complaints extends StatefulWidget {
   const Complaints({Key? key}) : super(key: key);
