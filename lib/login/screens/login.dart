@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import '../models/login_model.dart';
 
@@ -49,9 +51,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image(
-              image: AssetImage('assets/images/logo.png'),
-            ),
+            Image(image: AssetImage('assets/images/logo.png'), height: 150.0),
             Text(
               'Sign in to your account',
               style: TextStyle(fontSize: 20.0),

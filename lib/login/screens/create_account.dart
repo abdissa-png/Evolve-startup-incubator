@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class CreateAccountPage extends StatefulWidget {
@@ -26,9 +28,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
       body: Column(
         children: [
           SizedBox(height: 30),
-          Image(
-            image: AssetImage('assets/images/logo.png'),
-          ),
+          Image(image: AssetImage('assets/images/logo.png'), height: 150.0),
           SizedBox(height: 40),
           Text(
             'Select account type you want to create',
@@ -59,10 +59,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
           Spacer(),
           ElevatedButton(
             onPressed: _navigateToAccountCreationPage,
-            child: Text('Next'),
             style: ElevatedButton.styleFrom(
-              primary: Colors.purple[900],
+              backgroundColor: Colors.purple[900],
             ),
+            child: Text('Next'),
           ),
           SizedBox(height: 50)
         ],

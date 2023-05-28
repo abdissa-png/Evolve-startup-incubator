@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import '../models/create_investor_model.dart';
 
@@ -109,9 +111,9 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
               SizedBox(height: 16.0),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Additional Information',
+                  labelText: 'Description',
                 ),
-                maxLines: 3,
+                maxLines: 7,
                 validator: (value) {
                   return null;
                 },
@@ -124,7 +126,7 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'funding',
+                    value: 'Funding',
                     groupValue: _investor.interest,
                     onChanged: (value) {
                       setState(() {
@@ -138,7 +140,7 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'mentoring',
+                    value: 'Mentoring',
                     groupValue: _investor.interest,
                     onChanged: (value) {
                       setState(() {
@@ -152,7 +154,7 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'legal',
+                    value: 'Legal',
                     groupValue: _investor.interest,
                     onChanged: (value) {
                       setState(() {
@@ -166,7 +168,7 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'other',
+                    value: 'Other',
                     groupValue: _investor.interest,
                     onChanged: (value) {
                       setState(() {
@@ -177,28 +179,28 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                   Text('Other'),
                 ],
               ),
-              if (_investor.interest == 'other')
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Specify Interest',
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Interest details are required';
-                    }
+              // if (_investor.interest == 'other')
+              //   TextFormField(
+              //     decoration: InputDecoration(
+              //       labelText: 'Specify Interest',
+              //     ),
+              //     validator: (value) {
+              //       if (value == null || value.isEmpty) {
+              //         return 'Interest details are required';
+              //       }
 
-                    return null;
-                  },
-                  onSaved: (value) {
-                    _investor.otherInterest = value!;
-                  },
-                ),
+              //       return null;
+              //     },
+              //     onSaved: (value) {
+              //       _investor.otherInterest = value!;
+              //     },
+              //   ),
               SizedBox(height: 16.0),
               Text('Investment Stage'),
               Row(
                 children: [
                   Radio(
-                    value: 'seed',
+                    value: 'Seed',
                     groupValue: _investor.investmentStage,
                     onChanged: (value) {
                       setState(() {
@@ -212,7 +214,7 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'early_stage',
+                    value: 'Early-Stage',
                     groupValue: _investor.investmentStage,
                     onChanged: (value) {
                       setState(() {
@@ -226,7 +228,7 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'growth',
+                    value: 'Growth',
                     groupValue: _investor.investmentStage,
                     onChanged: (value) {
                       setState(() {
@@ -240,7 +242,7 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'late_stage',
+                    value: 'Late-Stage',
                     groupValue: _investor.investmentStage,
                     onChanged: (value) {
                       setState(() {
@@ -262,7 +264,7 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.purple[900],
+                  backgroundColor: Colors.purple[900],
                 ),
                 child: Text(
                   'Create Account',

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import '../models/create_startup_model.dart';
 
@@ -119,9 +121,9 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
               SizedBox(height: 16.0),
               TextFormField(
                 decoration: InputDecoration(
-                  labelText: 'Additional Information',
+                  labelText: 'Description',
                 ),
-                maxLines: 3,
+                maxLines: 7,
                 validator: (value) {
                   return null;
                 },
@@ -131,7 +133,7 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'funding',
+                    value: 'Funding',
                     groupValue: _otherAssistance,
                     onChanged: (value) {
                       setState(() {
@@ -145,7 +147,7 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'mentoring',
+                    value: 'Mentoring',
                     groupValue: _otherAssistance,
                     onChanged: (value) {
                       setState(() {
@@ -159,7 +161,7 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'legal',
+                    value: 'Legal Assistance',
                     groupValue: _otherAssistance,
                     onChanged: (value) {
                       setState(() {
@@ -173,7 +175,7 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'other',
+                    value: 'Other',
                     groupValue: _otherAssistance,
                     onChanged: (value) {
                       setState(() {
@@ -184,24 +186,24 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                   Text('Other'),
                 ],
               ),
-              if (_otherAssistance == 'other')
-                TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Specify Assistance',
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Assistance details are required';
-                    }
-                    return null;
-                  },
-                ),
+              // if (_otherAssistance == 'other')
+              //   TextFormField(
+              //     decoration: InputDecoration(
+              //       labelText: 'Specify Assistance',
+              //     ),
+              //     validator: (value) {
+              //       if (value == null || value.isEmpty) {
+              //         return 'Assistance details are required';
+              //       }
+              //       return null;
+              //     },
+              //   ),
               SizedBox(height: 16.0),
               Text('Company Stage'),
               Row(
                 children: [
                   Radio(
-                    value: 'seed',
+                    value: 'Seed',
                     groupValue: _companyStage,
                     onChanged: (value) {
                       setState(() {
@@ -215,7 +217,7 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'early_stage',
+                    value: 'Early-Stage',
                     groupValue: _companyStage,
                     onChanged: (value) {
                       setState(() {
@@ -229,7 +231,7 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'growth',
+                    value: 'Growth',
                     groupValue: _companyStage,
                     onChanged: (value) {
                       setState(() {
@@ -243,7 +245,7 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
               Row(
                 children: [
                   Radio(
-                    value: 'late_stage',
+                    value: 'Late-Stage',
                     groupValue: _companyStage,
                     onChanged: (value) {
                       setState(() {
@@ -280,7 +282,7 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.purple[900],
+                  backgroundColor: Colors.purple[900],
                 ),
                 child: Text(
                   'Create Account',
