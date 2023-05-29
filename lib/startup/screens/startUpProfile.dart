@@ -1,24 +1,36 @@
 import 'package:flutter/material.dart';
 
-import '../models/startUpProfileModel.dart';
 
-class startUpProfile extends StatefulWidget {
+import 'package:practice_flutter/models/startUpProfileModel.dart';
+
+
+
+
+
+
+
+class CreateStartupAccountPage extends StatefulWidget {
   @override
-  _startUpProfileState createState() => _startUpProfileState();
+  _CreateStartupAccountPageState createState() =>
+      _CreateStartupAccountPageState();
 }
 
-class _startUpProfileState extends State<startUpProfile> {
+class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
   startUpProfileModel startUpProfile = startUpProfileModel();
   String companyName = '';
   String phoneNumber = '';
   String address = '';
   String founder = '';
   String description = '';
-  bool fundingAssistance = false;
-  bool mentoringAssistance = false;
-  bool legalAssistance = false;
-  bool otherAssistance = false;
+  List<bool> assistanceSelections = [false, false, false, false];
   String companyStage = '';
+
+  List<String> assistanceOptions = [
+    'Funding',
+    'Mentoring',
+    'Legal Assistance',
+    'Other'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -91,41 +103,19 @@ class _startUpProfileState extends State<startUpProfile> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              CheckboxListTile(
-                title: Text('Funding'),
-                value: fundingAssistance,
-                onChanged: (value) {
-                  setState(() {
-                    fundingAssistance = value!;
-                  });
-                },
-              ),
-              CheckboxListTile(
-                title: Text('Mentoring'),
-                value: mentoringAssistance,
-                onChanged: (value) {
-                  setState(() {
-                    mentoringAssistance = value!;
-                  });
-                },
-              ),
-              CheckboxListTile(
-                title: Text('Legal Assistance'),
-                value: legalAssistance,
-                onChanged: (value) {
-                  setState(() {
-                    legalAssistance = value!;
-                  });
-                },
-              ),
-              CheckboxListTile(
-                title: Text('Other'),
-                value: otherAssistance,
-                onChanged: (value) {
-                  setState(() {
-                    otherAssistance = value!;
-                  });
-                },
+              Column(
+                children: assistanceOptions.map((option) {
+                  int index = assistanceOptions.indexOf(option);
+                  return CheckboxListTile(
+                    title: Text(option),
+                    value: assistanceSelections[index],
+                    onChanged: (value) {
+                      setState(() {
+                        assistanceSelections[index] = value!;
+                      });
+                    },
+                  );
+                }).toList(),
               ),
               SizedBox(height: 16.0),
               Text(
@@ -145,8 +135,8 @@ class _startUpProfileState extends State<startUpProfile> {
                 },
               ),
               RadioListTile(
-                title: Text('Early Stage'),
-                value: 'Early Stage',
+                title: Text('Early-Stage'),
+                value: 'Early-Stage',
                 groupValue: companyStage,
                 onChanged: (value) {
                   setState(() {
@@ -165,8 +155,8 @@ class _startUpProfileState extends State<startUpProfile> {
                 },
               ),
               RadioListTile(
-                title: Text('Late Stage'),
-                value: 'Late Stage',
+                title: Text('Late-Stage'),
+                value: 'Late-Stage',
                 groupValue: companyStage,
                 onChanged: (value) {
                   setState(() {
@@ -177,7 +167,9 @@ class _startUpProfileState extends State<startUpProfile> {
               SizedBox(height: 16.0),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Handle form submission
+                  },
                   style: ElevatedButton.styleFrom(
                     padding:
                         EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
