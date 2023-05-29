@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutter/material.dart';
 import '../models/EditAccountsModel.dart';
+import 'package:flutter/material.dart';
+import '../models/EditAccountsModel.dart';
+
+
 
 class EditAccountWidget extends StatefulWidget {
   @override
@@ -15,13 +21,14 @@ class _EditAccountWidgetState extends State<EditAccountWidget> {
   bool obscureConfirm = true;
   bool obscureOld = true;
 
-  bool _mismatch = false;
+  bool _passwordMismatch = false;
+  bool _shortPassword = false;
 
-  String? passPossible(String? val) {
-    if (val == null || val.isEmpty) {
+  String? validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
       return 'Field required!';
-    } else if (val.length < 8) {
-      return 'Too short! At least 8 characters required';
+    } else if (value.length < 6) {
+      return 'Too short! At least 6 characters required';
     } else {
       return null;
     }
@@ -33,103 +40,116 @@ class _EditAccountWidgetState extends State<EditAccountWidget> {
       appBar: AppBar(
         title: Text('Edit Account'),
       ),
-      body:SingleChildScrollView(
-      child:Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              'Change Password',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 16),
-            TextFormField(
-              controller: oldPassController,
-              obscureText: obscureOld,
-              decoration: InputDecoration(
-                labelText: 'Old Password',
-                suffixIcon: InkWell(
-                  onTap: () => setState(() => obscureOld = !obscureOld),
-                  child: Icon(obscureOld
-                      ? Icons.visibility_outlined
-                      : Icons.visibility_off_outlined),
-                ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'Change Password',
+                style: TextStyle(fontSize: 18),
               ),
-              validator: (value) {
-                return passPossible(value);
-              },
-            ),
-            SizedBox(height: 16),
-            TextFormField(
-              controller: newPassController,
-              obscureText: obscurePass,
-              decoration: InputDecoration(
-                labelText: 'New Password',
-                suffixIcon: InkWell(
-                  onTap: () => setState(() => obscurePass = !obscurePass),
-                  child: Icon(obscurePass
-                      ? Icons.visibility_outlined
-                      : Icons.visibility_off_outlined),
-                ),
-              ),
-              validator: (value) {
-                return passPossible(value);
-              },
-            ),
-            SizedBox(height: 16),
-            TextFormField(
-              controller: confirmPassController,
-              obscureText: obscureConfirm,
-              decoration: InputDecoration(
-                labelText: 'Re-enter New Password',
-                suffixIcon: InkWell(
-                  onTap: () => setState(() => obscureConfirm = !obscureConfirm),
-                  child: Icon(obscureConfirm
-                      ? Icons.visibility_outlined
-                      : Icons.visibility_off_outlined),
-                ),
-              ),
-              validator: (value) {
-                return passPossible(value);
-              },
-            ),
-            Visibility(
-              visible: _mismatch,
-              child: Row(
-                children: [
-                  Icon(Icons.warning),
-                  Text(
-                    "The new Password and re-entry password do not match",
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
+              SizedBox(height: 16),
+              TextFormField(
+                controller: oldPassController,
+                obscureText: obscureOld,
+                decoration: InputDecoration(
+                  labelText: 'Old Password',
+                  suffixIcon: InkWell(
+                    onTap: () => setState(() => obscureOld = !obscureOld),
+                    child: Icon(obscureOld
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined),
                   ),
-                ],
+                ),
               ),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                if (newPassController.text == confirmPassController.text) {
-                  // Change password logic here
-                } else {
+              SizedBox(height: 16),
+              TextFormField(
+                controller: newPassController,
+                obscureText: obscurePass,
+                decoration: InputDecoration(
+                  labelText: 'New Password',
+                  suffixIcon: InkWell(
+                    onTap: () => setState(() => obscurePass = !obscurePass),
+                    child: Icon(obscurePass
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined),
+                  ),
+                ),
+                validator: (value) {
+                  final passwordError = validatePassword(value);
+                  if (passwordError != null) {
+                    setState(() {
+                      _shortPassword = true;
+                    });
+                  } else {
+                    setState(() {
+                      _shortPassword = false;
+                    });
+                  }
+                  return passwordError;
+                },
+              ),
+              SizedBox(height: 16),
+              TextFormField(
+                controller: confirmPassController,
+                obscureText: obscureConfirm,
+                decoration: InputDecoration(
+                  labelText: 'Re-enter New Password',
+                  suffixIcon: InkWell(
+                    onTap: () =>
+                        setState(() => obscureConfirm = !obscureConfirm),
+                    child: Icon(obscureConfirm
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined),
+                  ),
+                ),
+                validator: (value) {
+                  if (value != newPassController.text) {
+                    return 'Passwords do not match';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 16),
+              Visibility(
+                visible: _passwordMismatch || _shortPassword,
+                child: Row(
+                  children: [
+                    Icon(Icons.warning),
+                    Text(
+                      _shortPassword
+                          ? "Password must be at least 6 characters long"
+                          : "The new Password and re-entry password do not match",
+                      style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
                   setState(() {
-                    _mismatch = true;
+                    _passwordMismatch = newPassController.text != confirmPassController.text;
+                    _shortPassword = newPassController.text.length < 6;
                   });
-                }
-              },
-              child: Text('Change password'),
-            ),
-            SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text('Delete Account'),
-            ),
-          ],
+
+                  if (!_passwordMismatch && !_shortPassword) {
+                    // Change password logic here
+                  }
+                },
+                child: Text('Change password'),
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Delete Account'),
+              ),
+            ],
+          ),
         ),
       ),
-        
-        )
     );
-      
   }
 }
