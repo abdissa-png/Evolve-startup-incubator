@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../models/searchInvestorModel.dart';
 
+
+class searchInvestor {
+  final String title;
+  final String message;
+
+  searchInvestor({required this.title, required this.message});
+}
+
 class SearchInvestorScreen extends StatefulWidget {
   @override
   _SearchInvestorScreenState createState() => _SearchInvestorScreenState();
@@ -51,10 +59,72 @@ class _SearchInvestorScreenState extends State<SearchInvestorScreen> {
             child: ListView.builder(
               itemCount: searchResults.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(searchResults[index].title),
-                  subtitle:
-                      Text('Phone Number: ${searchResults[index].message}'),
+                return ExpansionTile(
+                  title: Text(
+                    searchResults[index].title,
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  subtitle: Text(
+                    'Phone Number: ${searchResults[index].message}',
+                    style: TextStyle(fontSize: 14.0),
+                  ),
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                      child: Text(
+                        'Description',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 8.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Investment Stage: ',
+                          style: TextStyle(fontSize: 16.0),
+                        ),
+                        Text(
+                          'Growth',
+                          style: TextStyle(fontSize: 16.0),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 8.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Investment Interests: ',
+                          style: TextStyle(fontSize: 16.0),
+                        ),
+                        Text(
+                          'Financial',
+                          style: TextStyle(fontSize: 16.0),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 16.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text('Check Startup'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text('Request to Work'),
+                        ),
+                      ],
+                    ),
+                  ],
                 );
               },
             ),
