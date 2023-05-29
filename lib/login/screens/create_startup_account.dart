@@ -322,15 +322,15 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                     _formKey.currentState!.save();
                     _startup.assistanceRequired = _selectedAssistance;
                     _startup.companyStage = _companyStage;
-                    print(_startup.address);
-                    print(_startup.assistanceRequired);
-                    print(_startup.companyName);
-                    print(_startup.companyStage);
-                    print(_startup.description);
-                    print(_startup.email);
-                    print(_startup.founders);
-                    print(_startup.password);
-                    print(_startup.phoneNumber);
+                    // print(_startup.address);
+                    // print(_startup.assistanceRequired);
+                    // print(_startup.companyName);
+                    // print(_startup.companyStage);
+                    // print(_startup.description);
+                    // print(_startup.email);
+                    // print(_startup.founders);
+                    // print(_startup.password);
+                    // print(_startup.phoneNumber);
                   }
                 },
                 style: ElevatedButton.styleFrom(

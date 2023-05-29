@@ -321,13 +321,13 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                     // Process the investor data
                     // Example: createAccount(_investor);
                     // Redirect to investor home page
-                    print(_investor.description);
-                    print(_investor.email);
-                    print(_investor.interest);
-                    print(_investor.investmentStage);
-                    print(_investor.name);
-                    print(_investor.password);
-                    print(_investor.phoneNumber);
+                    // print(_investor.description);
+                    // print(_investor.email);
+                    // print(_investor.interest);
+                    // print(_investor.investmentStage);
+                    // print(_investor.name);
+                    // print(_investor.password);
+                    // print(_investor.phoneNumber);
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -344,21 +344,6 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
           ),
         ),
       ),
-    );
-  }
-}
-
-void main() {
-  runApp(app());
-}
-
-class app extends StatelessWidget {
-  const app({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: CreateInvestorAccountPage(),
     );
   }
 }
