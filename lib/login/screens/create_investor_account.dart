@@ -11,8 +11,11 @@ class CreateInvestorAccountPage extends StatefulWidget {
 
 class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
   final _formKey = GlobalKey<FormState>();
-  InvestorModel _investor = InvestorModel();
-
+  late InvestorModel _investor;
+  final List<bool> _assistanceChecked = [true, false, false, false];
+  final List<String> _selectedAssistance = [];
+  final List<bool> _stageChecked = [true, false, false, false];
+  final List<String> _selectedStage = [];
   bool _passwordVisible = false;
 
   @override
@@ -102,6 +105,10 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                   labelText: 'Phone Number',
                 ),
                 validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Phone number is required';
+                  }
+
                   return null;
                 },
                 onSaved: (value) {
@@ -115,68 +122,88 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                 ),
                 maxLines: 7,
                 validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Investor name is required';
+                  }
+
                   return null;
                 },
                 onSaved: (value) {
-                  _investor.additionalInfo = value!;
+                  _investor.description = value!;
                 },
               ),
               SizedBox(height: 16.0),
               Text('Investment Interest'),
               Row(
                 children: [
-                  Radio(
-                    value: 'Funding',
-                    groupValue: _investor.interest,
+                  CheckboxListTile(
+                    title: Text('Funding'),
+                    value: _assistanceChecked[0],
                     onChanged: (value) {
                       setState(() {
-                        _investor.interest = value.toString();
+                        _assistanceChecked[0] = value!;
+                        if (value) {
+                          _selectedAssistance.add("Funding");
+                        } else {
+                          _selectedAssistance.remove("Funding");
+                        }
                       });
                     },
-                  ),
-                  Text('Funding'),
+                  )
                 ],
               ),
               Row(
                 children: [
-                  Radio(
-                    value: 'Mentoring',
-                    groupValue: _investor.interest,
+                  CheckboxListTile(
+                    title: Text('Mentoring'),
+                    value: _assistanceChecked[1],
                     onChanged: (value) {
                       setState(() {
-                        _investor.interest = value.toString();
+                        _assistanceChecked[1] = value!;
+                        if (value) {
+                          _selectedAssistance.add("Mentoring");
+                        } else {
+                          _selectedAssistance.remove("Mentoring");
+                        }
                       });
                     },
-                  ),
-                  Text('Mentoring'),
+                  )
                 ],
               ),
               Row(
                 children: [
-                  Radio(
-                    value: 'Legal',
-                    groupValue: _investor.interest,
+                  CheckboxListTile(
+                    title: Text('Legal Assistance'),
+                    value: _assistanceChecked[2],
                     onChanged: (value) {
                       setState(() {
-                        _investor.interest = value.toString();
+                        _assistanceChecked[2] = value!;
+                        if (value) {
+                          _selectedAssistance.add("Legal Assistance");
+                        } else {
+                          _selectedAssistance.remove("Legal Assistance");
+                        }
                       });
                     },
-                  ),
-                  Text('Legal'),
+                  )
                 ],
               ),
               Row(
                 children: [
-                  Radio(
-                    value: 'Other',
-                    groupValue: _investor.interest,
+                  CheckboxListTile(
+                    title: Text('Other'),
+                    value: _assistanceChecked[3],
                     onChanged: (value) {
                       setState(() {
-                        _investor.interest = value.toString();
+                        _assistanceChecked[3] = value!;
+                        if (value) {
+                          _selectedAssistance.add("Other");
+                        } else {
+                          _selectedAssistance.remove("Other");
+                        }
                       });
                     },
                   ),
-                  Text('Other'),
                 ],
               ),
               // if (_investor.interest == 'other')
@@ -199,58 +226,74 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
               Text('Investment Stage'),
               Row(
                 children: [
-                  Radio(
-                    value: 'Seed',
-                    groupValue: _investor.investmentStage,
+                  CheckboxListTile(
+                    title: Text('Seed'),
+                    value: _stageChecked[0],
                     onChanged: (value) {
                       setState(() {
-                        _investor.investmentStage = value.toString();
+                        _stageChecked[0] = value!;
+                        if (value) {
+                          _selectedStage.add("Seed");
+                        } else {
+                          _selectedStage.remove("Seed");
+                        }
                       });
                     },
-                  ),
-                  Text('Seed'),
+                  )
                 ],
               ),
               Row(
                 children: [
-                  Radio(
-                    value: 'Early-Stage',
-                    groupValue: _investor.investmentStage,
+                  CheckboxListTile(
+                    title: Text('Early-Stage'),
+                    value: _stageChecked[1],
                     onChanged: (value) {
                       setState(() {
-                        _investor.investmentStage = value.toString();
+                        _stageChecked[1] = value!;
+                        if (value) {
+                          _selectedStage.add("Early-Stage");
+                        } else {
+                          _selectedStage.remove("Early-Stage");
+                        }
                       });
                     },
-                  ),
-                  Text('Early Stage'),
+                  )
                 ],
               ),
               Row(
                 children: [
-                  Radio(
-                    value: 'Growth',
-                    groupValue: _investor.investmentStage,
+                  CheckboxListTile(
+                    title: Text('Growth'),
+                    value: _stageChecked[2],
                     onChanged: (value) {
                       setState(() {
-                        _investor.investmentStage = value.toString();
+                        _stageChecked[2] = value!;
+                        if (value) {
+                          _selectedStage.add("Growth");
+                        } else {
+                          _selectedStage.remove("Growth");
+                        }
                       });
                     },
-                  ),
-                  Text('Growth'),
+                  )
                 ],
               ),
               Row(
                 children: [
-                  Radio(
-                    value: 'Late-Stage',
-                    groupValue: _investor.investmentStage,
+                  CheckboxListTile(
+                    title: Text('Late-Stage'),
+                    value: _stageChecked[3],
                     onChanged: (value) {
                       setState(() {
-                        _investor.investmentStage = value.toString();
+                        _stageChecked[3] = value!;
+                        if (value) {
+                          _selectedStage.add("Late-Stage");
+                        } else {
+                          _selectedStage.remove("Late-Stage");
+                        }
                       });
                     },
-                  ),
-                  Text('Late Stage'),
+                  )
                 ],
               ),
               SizedBox(height: 16.0),
@@ -258,9 +301,18 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
+                    _investor.interest = _selectedAssistance;
+                    _investor.investmentStage = _selectedStage;
                     // Process the investor data
                     // Example: createAccount(_investor);
                     // Redirect to investor home page
+                    print(_investor.description);
+                    print(_investor.email);
+                    print(_investor.interest);
+                    print(_investor.investmentStage);
+                    print(_investor.name);
+                    print(_investor.password);
+                    print(_investor.phoneNumber);
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -278,5 +330,18 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
         ),
       ),
     );
+  }
+}
+
+void main() {
+  runApp(app());
+}
+
+class app extends StatelessWidget {
+  const app({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CreateInvestorAccountPage();
   }
 }

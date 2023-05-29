@@ -11,12 +11,10 @@ class CreateStartupAccountPage extends StatefulWidget {
 
 class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
   final _formKey = GlobalKey<FormState>();
-  bool _fundingAssistance = false;
-  bool _mentoringAssistance = false;
-  bool _legalAssistance = false;
-  String _otherAssistance = '';
-  String _companyStage = '';
-
+  final List<bool> _isChecked = [true, false, false, false];
+  final List<String> _selectedAssistance = [];
+  String _companyStage = 'Seed';
+  late StartupModel _startup;
   bool _passwordVisible = false;
 
   @override
@@ -53,6 +51,9 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                   }
                   return null;
                 },
+                onSaved: (val) {
+                  _startup.email = val!;
+                },
               ),
               SizedBox(height: 16.0),
               TextFormField(
@@ -76,6 +77,9 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                   }
                   return null;
                 },
+                onSaved: (val) {
+                  _startup.password = val!;
+                },
               ),
               SizedBox(height: 16.0),
               TextFormField(
@@ -88,6 +92,9 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                   }
                   return null;
                 },
+                onSaved: (val) {
+                  _startup.companyName = val!;
+                },
               ),
               SizedBox(height: 16.0),
               TextFormField(
@@ -95,7 +102,13 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                   labelText: 'Phone Number',
                 ),
                 validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Phone number is required';
+                  }
                   return null;
+                },
+                onSaved: (val) {
+                  _startup.phoneNumber = val!;
                 },
               ),
               SizedBox(height: 16.0),
@@ -104,8 +117,13 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                   labelText: 'Address',
                 ),
                 validator: (value) {
-                  // Add additional address validation logic
+                  if (value == null || value.isEmpty) {
+                    return 'Address is required';
+                  }
                   return null;
+                },
+                onSaved: (val) {
+                  _startup.address = val!;
                 },
               ),
               SizedBox(height: 16.0),
@@ -114,8 +132,13 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                   labelText: 'Founder(s)',
                 ),
                 validator: (value) {
-                  // Add additional founder(s) validation logic
+                  if (value == null || value.isEmpty) {
+                    return 'Founder(s) is required';
+                  }
                   return null;
+                },
+                onSaved: (val) {
+                  _startup.founders = val!;
                 },
               ),
               SizedBox(height: 16.0),
@@ -125,61 +148,84 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                 ),
                 maxLines: 7,
                 validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Description is required';
+                  }
                   return null;
+                },
+                onSaved: (val) {
+                  _startup.description = val!;
                 },
               ),
               SizedBox(height: 16.0),
               Text('Assistance Required'),
               Row(
                 children: [
-                  Radio(
-                    value: 'Funding',
-                    groupValue: _otherAssistance,
-                    onChanged: (value) {
+                  CheckboxListTile(
+                    title: Text('Funding'),
+                    value: _isChecked[0],
+                    onChanged: (val) {
                       setState(() {
-                        _otherAssistance = value.toString();
+                        _isChecked[0] = val!;
+                        if (val) {
+                          _selectedAssistance.add("Funding");
+                        } else {
+                          _selectedAssistance.remove("Funding");
+                        }
                       });
                     },
                   ),
-                  Text('Funding'),
                 ],
               ),
               Row(
                 children: [
-                  Radio(
-                    value: 'Mentoring',
-                    groupValue: _otherAssistance,
-                    onChanged: (value) {
+                  CheckboxListTile(
+                    title: Text("Mentoring"),
+                    value: _isChecked[1],
+                    onChanged: (val) {
                       setState(() {
-                        _otherAssistance = value.toString();
+                        _isChecked[1] = val!;
+                        if (val) {
+                          _selectedAssistance.add("Mentoring");
+                        } else {
+                          _selectedAssistance.remove("Mentoring");
+                        }
                       });
                     },
-                  ),
-                  Text('Mentoring'),
+                  )
                 ],
               ),
               Row(
                 children: [
-                  Radio(
-                    value: 'Legal Assistance',
-                    groupValue: _otherAssistance,
-                    onChanged: (value) {
+                  CheckboxListTile(
+                    title: Text('Legal Assistance'),
+                    value: _isChecked[2],
+                    onChanged: (val) {
                       setState(() {
-                        _otherAssistance = value.toString();
+                        _isChecked[2] = val!;
+                        if (val) {
+                          _selectedAssistance.add("Legal Assistance");
+                        } else {
+                          _selectedAssistance.remove("Legal Assistance");
+                        }
                       });
                     },
                   ),
-                  Text('Legal'),
                 ],
               ),
               Row(
                 children: [
-                  Radio(
-                    value: 'Other',
-                    groupValue: _otherAssistance,
-                    onChanged: (value) {
+                  CheckboxListTile(
+                    title: Text('Other'),
+                    value: _isChecked[3],
+                    onChanged: (val) {
                       setState(() {
-                        _otherAssistance = value.toString();
+                        _isChecked[3] = val!;
+                        if (val) {
+                          _selectedAssistance.add("Other");
+                        } else {
+                          _selectedAssistance.remove("Other");
+                        }
                       });
                     },
                   ),
@@ -261,24 +307,18 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     // Create startup model and save the data
-                    StartupModel startup = StartupModel(
-                      email: 'email@example.com',
-                      password: 'password',
-                      companyName: 'Company Name',
-                      phoneNumber: '1234567890',
-                      address: 'Company Address',
-                      founders: 'Founder 1, Founder 2',
-                      additionalInfo: 'Additional Information',
-                      assistanceRequired: _otherAssistance,
-                      assistanceDetails: _otherAssistance == 'other'
-                          ? 'Assistance Details'
-                          : '',
-                      companyStage: _companyStage,
-                    );
-
-                    // TODO: Save the startup model to the database or perform further actions
-
-                    // Redirect to startup home page
+                    _formKey.currentState!.save();
+                    _startup.assistanceRequired = _selectedAssistance;
+                    _startup.companyStage = _companyStage;
+                    print(_startup.address);
+                    print(_startup.assistanceRequired);
+                    print(_startup.companyName);
+                    print(_startup.companyStage);
+                    print(_startup.description);
+                    print(_startup.email);
+                    print(_startup.founders);
+                    print(_startup.password);
+                    print(_startup.phoneNumber);
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -295,6 +335,21 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
           ),
         ),
       ),
+    );
+  }
+}
+
+void main() {
+  runApp(app());
+}
+
+class app extends StatelessWidget {
+  const app({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: CreateStartupAccountPage(),
     );
   }
 }

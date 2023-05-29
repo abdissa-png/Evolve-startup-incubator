@@ -1,14 +1,13 @@
 class StartupModel {
-  final String email;
-  final String password;
-  final String companyName;
-  final String phoneNumber;
-  final String address;
-  final String founders;
-  final String additionalInfo;
-  final String assistanceRequired;
-  final String assistanceDetails;
-  final String companyStage;
+  String email;
+  String password;
+  String companyName;
+  String phoneNumber;
+  String address;
+  String founders;
+  String description;
+  List<String> assistanceRequired;
+  String companyStage;
   StartupModel({
     required this.email,
     required this.password,
@@ -16,9 +15,21 @@ class StartupModel {
     required this.phoneNumber,
     required this.address,
     required this.founders,
-    required this.additionalInfo,
+    required this.description,
     required this.assistanceRequired,
-    required this.assistanceDetails,
     required this.companyStage,
   });
+  Map<String, dynamic> toJson() {
+    return {
+      'name': companyName,
+      'email': email,
+      'password': password,
+      'description': description,
+      'founders': founders,
+      'industryStage': companyStage,
+      'address': address,
+      'phoneNumber': phoneNumber,
+      'requiredAssistance': assistanceRequired
+    };
+  }
 }
