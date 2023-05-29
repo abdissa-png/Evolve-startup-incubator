@@ -26,7 +26,7 @@ class _PairedupStartupsWidgetState extends State<PairedupStartupsWidget> {
   //   _unfocusNode.dispose();
   //   super.dispose();
   // }
-
+  List<String> startups = ['StartUp - 1','StartUp - 2','StartUp - 3','StartUp - 4'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,12 +61,13 @@ class _PairedupStartupsWidgetState extends State<PairedupStartupsWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  ListTile(
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: startups.length,
+                itemBuilder: (BuildContext context, int index){
+                 return  ListTile(
                     title: Text(
-                      'Investor Name1',
+                      startups[index].toString(),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(
@@ -75,32 +76,9 @@ class _PairedupStartupsWidgetState extends State<PairedupStartupsWidget> {
                     ),
                     tileColor: Colors.white,
                     dense: false,
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Investor Name',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text(
-                      'Address',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    tileColor: Colors.white,
-                    dense: false,
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Investor Name',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text(
-                      'Address',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    tileColor: Colors.white,
-                    dense: false,
-                  ),
-                ],
+                  );
+                },
+               
               ),
             ],
           ),

@@ -1,16 +1,27 @@
-class InvestorProfileModel {
-  late bool funding;
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+class InvestorModel {
 
-  late bool mentoring;
-  late bool legal;
-  late bool other;
+  String name;
+  String phoneNumber;
+  String description;
+  List<String> interest;
+  List<String> investmentStage;
+  InvestorModel({
 
-  late bool seed;
+    required this.name,
+    required this.phoneNumber,
+    required this.description,
+    required this.interest,
+    required this.investmentStage,
+  });
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
 
-  late bool early;
-  late bool growth;
-  late bool late;
-  late String? phone;
-  late String name;
-  late String description;
+      'description': description,
+      'phoneNumber': phoneNumber,
+      'industryStage': investmentStage,
+      'requiredAssistance': interest
+    };
+  }
 }

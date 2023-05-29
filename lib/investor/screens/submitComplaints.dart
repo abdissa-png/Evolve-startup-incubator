@@ -56,91 +56,93 @@ class _SubmitcomplaintWidgetState extends State<SubmitcomplaintWidget> {
       ),
       body: SafeArea(
         top: true,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Form(
-              key: _model.formKey,
-              autovalidateMode: AutovalidateMode.disabled,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                    width: 200,
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
-                      child: Container(
-                        width: double.infinity,
-                        child: TextFormField(
-                          controller: _model.textController,
-                          autofocus: true,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: 'Write Post',
-                            labelStyle: TextStyle(
-                                color: Color.fromARGB(90, 117, 117, 117)),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.black,
-                                width: 2,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Form(
+                key: _model.formKey,
+                autovalidateMode: AutovalidateMode.disabled,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      width: 200,
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                        child: Container(
+                          width: double.infinity,
+                          child: TextFormField(
+                            controller: _model.textController,
+                            autofocus: true,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: 'Write Post',
+                              labelStyle: TextStyle(
+                                  color: Color.fromARGB(90, 117, 117, 117)),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.blue,
-                                width: 2,
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.blue,
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            errorBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.red,
-                                width: 2,
+                              errorBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.red,
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedErrorBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.deepOrange,
-                                width: 2,
+                              focusedErrorBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.deepOrange,
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              borderRadius: BorderRadius.circular(8),
                             ),
+                            // style: FlutterFlowTheme.of(context).bodyMedium,
+                            maxLines: 15,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Field required!';
+                              } else {
+                                null;
+                              }
+                            },
                           ),
-                          // style: FlutterFlowTheme.of(context).bodyMedium,
-                          maxLines: 15,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Field required!';
-                            } else {
-                              null;
-                            }
-                          },
                         ),
                       ),
                     ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (_model.formKey.currentState!.validate()) {
-                        _model.complaint = _model.textController!.text;
-                        print(_model.complaint);
-                      } else {
-                        null;
-                      }
-                    },
-                    child: Text('Post'),
-                    style: ElevatedButton.styleFrom(
-                      alignment: Alignment.center,
-                      backgroundColor: Colors.blue,
+                    ElevatedButton(
+                      onPressed: () {
+                        if (_model.formKey.currentState!.validate()) {
+                          _model.complaint = _model.textController!.text;
+                          print(_model.complaint);
+                        } else {
+                          null;
+                        }
+                      },
+                      child: Text('Post'),
+                      style: ElevatedButton.styleFrom(
+                        alignment: Alignment.center,
+                        backgroundColor: Colors.blue,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

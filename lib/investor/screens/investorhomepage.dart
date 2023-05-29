@@ -23,6 +23,12 @@ class _InvestorhomepageWidgetState extends State<InvestorhomepageWidget> {
     super.dispose();
   }
 
+  List<String> startups = [
+    'StartUp - 1',
+    'StartUp - 2',
+    'StartUp - 3',
+    'StartUp - 4'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,106 +38,109 @@ class _InvestorhomepageWidgetState extends State<InvestorhomepageWidget> {
         elevation: 16,
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 150, 0, 0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              ListTile(
-                leading: Icon(
-                  Icons.person,
-                ),
-                title: Text(
-                  'Profile',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                ListTile(
+                  leading: Icon(
+                    Icons.person,
                   ),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  color: Color.fromARGB(100, 117, 117, 117),
-                  size: 20,
-                ),
-                tileColor: Colors.white,
-                dense: false,
-              ),
-              ListTile(
-                leading: Icon(
-                  Icons.content_paste_sharp,
-                ),
-                title: Text(
-                  'Startup\'s you paired with',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
+                  title: Text(
+                    'Profile',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 18,
+                    ),
                   ),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  color: Color.fromARGB(100, 117, 117, 117),
-                  size: 20,
-                ),
-                tileColor: Colors.white,
-                dense: false,
-              ),
-              ListTile(
-                leading: Icon(
-                  Icons.notifications,
-                ),
-                title: Text(
-                  'Notifications',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Color.fromARGB(100, 117, 117, 117),
+                    size: 20,
                   ),
+                  tileColor: Colors.white,
+                  dense: false,
                 ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  color: Color.fromARGB(100, 117, 117, 117),
-                  size: 20,
-                ),
-                tileColor: Colors.white,
-                dense: false,
-              ),
-              ListTile(
-                leading: Icon(
-                  Icons.account_circle,
-                ),
-                title: Text(
-                  'Edit Account',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
+                ListTile(
+                  leading: Icon(
+                    Icons.content_paste_sharp,
                   ),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  color: Color.fromARGB(100, 117, 117, 117),
-                  size: 20,
-                ),
-                tileColor: Colors.white,
-                dense: false,
-              ),
-              ListTile(
-                leading: Icon(
-                  Icons.message,
-                ),
-                title: Text(
-                  'Submit complaint',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
+                  title: Text(
+                    'Startup\'s you paired with',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 18,
+                    ),
                   ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Color.fromARGB(100, 117, 117, 117),
+                    size: 20,
+                  ),
+                  tileColor: Colors.white,
+                  dense: false,
                 ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  color: Color.fromARGB(100, 117, 117, 117),
-                  size: 20,
+                ListTile(
+                  leading: Icon(
+                    Icons.notifications,
+                  ),
+                  title: Text(
+                    'Notifications',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 18,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Color.fromARGB(100, 117, 117, 117),
+                    size: 20,
+                  ),
+                  tileColor: Colors.white,
+                  dense: false,
                 ),
-                tileColor: Colors.white,
-                dense: false,
-              ),
-            ],
+                ListTile(
+                  leading: Icon(
+                    Icons.account_circle,
+                  ),
+                  title: Text(
+                    'Edit Account',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 18,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Color.fromARGB(100, 117, 117, 117),
+                    size: 20,
+                  ),
+                  tileColor: Colors.white,
+                  dense: false,
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.message,
+                  ),
+                  title: Text(
+                    'Submit complaint',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 18,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Color.fromARGB(100, 117, 117, 117),
+                    size: 20,
+                  ),
+                  tileColor: Colors.white,
+                  dense: false,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -228,12 +237,13 @@ class _InvestorhomepageWidgetState extends State<InvestorhomepageWidget> {
                       child: TabBarView(
                         children: [
                           SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                ListTile(
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: startups.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return ListTile(
                                   title: Text(
-                                    'Startup 1',
+                                    startups[index].toString(),
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
@@ -246,96 +256,48 @@ class _InvestorhomepageWidgetState extends State<InvestorhomepageWidget> {
                                   ),
                                   tileColor: Colors.white,
                                   dense: false,
-                                ),
-                                ListTile(
-                                  title: Text(
-                                    'Startup 2',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  subtitle: Text(
-                                    'Accepted',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  tileColor: Colors.white,
-                                  dense: false,
-                                ),
-                                ListTile(
-                                  title: Text(
-                                    'Startup 3',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  subtitle: Text(
-                                    'Accepted',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  tileColor: Colors.white,
-                                  dense: false,
-                                ),
-                              ],
+                                  
+                                );
+                              },
                             ),
                           ),
                           SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                ListTile(
-                                  title: Text(
-                                    'Startup 1',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  subtitle: Text(
-                                    'pending',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  tileColor: Colors.white,
-                                  dense: false,
-                                ),
-                                ListTile(
-                                  title: Text(
-                                    'Startup 2',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  subtitle: Text(
-                                    'pending',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  tileColor: Colors.white,
-                                  dense: false,
-                                ),
-                                ListTile(
-                                  title: Text(
-                                    'Startup 3',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  subtitle: Text(
-                                    'pending',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w400),
-                                  ),
-                                  tileColor: Colors.white,
-                                  dense: false,
-                                ),
-                              ],
-                            ),
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: startups.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return ListTile(
+                                    title: Text(
+                                      startups[index].toString(),
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    subtitle: Text(
+                                      'pending...',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                    tileColor: Colors.white,
+                                    dense: false,
+                                    trailing: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                                Icons.check)),
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                              Icons.close,
+                                              color: Colors.red,
+                                            )),
+                                      ],
+                                    ),
+                                  );
+                                }),
                           ),
                         ],
                       ),
