@@ -23,8 +23,8 @@ class InvestorModel {
       'password': password,
       'description': description,
       'phoneNumber': phoneNumber,
-      'industryStage': investmentStage,
-      'requiredAssistance': interest
+      'investmentStage': investmentStage,
+      'investmentInterests': interest
     };
   }
 }

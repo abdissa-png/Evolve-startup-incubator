@@ -130,7 +130,7 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                 maxLines: 7,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Investor name is required';
+                    return 'Description is required';
                   }
 
                   return null;

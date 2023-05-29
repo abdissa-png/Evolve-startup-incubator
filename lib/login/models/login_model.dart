@@ -3,6 +3,12 @@ class LoginModel {
   String password;
 
   LoginModel({required this.email, required this.password});
+  Map<String, String> toJson() {
+    return {
+      'email': email,
+      'password': password,
+    };
+  }
 
   bool validateEmail(String email) {
     // Use regex to validate email format
