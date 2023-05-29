@@ -11,10 +11,19 @@ class CreateStartupAccountPage extends StatefulWidget {
 
 class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
   final _formKey = GlobalKey<FormState>();
-  final List<bool> _isChecked = [true, false, false, false];
+  final List<bool> _isChecked = [false, false, false, false];
   final List<String> _selectedAssistance = [];
   String _companyStage = 'Seed';
-  late StartupModel _startup;
+  StartupModel _startup = StartupModel(
+      address: "",
+      founders: "",
+      phoneNumber: "",
+      assistanceRequired: [],
+      companyName: "",
+      companyStage: "",
+      description: "",
+      email: "",
+      password: "");
   bool _passwordVisible = false;
 
   @override
@@ -161,8 +170,8 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
               Text('Assistance Required'),
               Row(
                 children: [
-                  CheckboxListTile(
-                    title: Text('Funding'),
+                  Checkbox(
+                    tristate: false,
                     value: _isChecked[0],
                     onChanged: (val) {
                       setState(() {
@@ -175,12 +184,13 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                       });
                     },
                   ),
+                  Text('Funding'),
                 ],
               ),
               Row(
                 children: [
-                  CheckboxListTile(
-                    title: Text("Mentoring"),
+                  Checkbox(
+                    tristate: false,
                     value: _isChecked[1],
                     onChanged: (val) {
                       setState(() {
@@ -192,13 +202,14 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                         }
                       });
                     },
-                  )
+                  ),
+                  Text("Mentoring")
                 ],
               ),
               Row(
                 children: [
-                  CheckboxListTile(
-                    title: Text('Legal Assistance'),
+                  Checkbox(
+                    tristate: false,
                     value: _isChecked[2],
                     onChanged: (val) {
                       setState(() {
@@ -211,12 +222,13 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                       });
                     },
                   ),
+                  Text('Legal Assistance')
                 ],
               ),
               Row(
                 children: [
-                  CheckboxListTile(
-                    title: Text('Other'),
+                  Checkbox(
+                    tristate: false,
                     value: _isChecked[3],
                     onChanged: (val) {
                       setState(() {
@@ -335,21 +347,6 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
           ),
         ),
       ),
-    );
-  }
-}
-
-void main() {
-  runApp(app());
-}
-
-class app extends StatelessWidget {
-  const app({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: CreateStartupAccountPage(),
     );
   }
 }

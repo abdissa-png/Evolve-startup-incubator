@@ -11,10 +11,17 @@ class CreateInvestorAccountPage extends StatefulWidget {
 
 class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
   final _formKey = GlobalKey<FormState>();
-  late InvestorModel _investor;
-  final List<bool> _assistanceChecked = [true, false, false, false];
+  InvestorModel _investor = InvestorModel(
+      email: "",
+      password: "",
+      name: "",
+      phoneNumber: "",
+      description: "",
+      interest: [],
+      investmentStage: []);
+  final List<bool> _assistanceChecked = [false, false, false, false];
   final List<String> _selectedAssistance = [];
-  final List<bool> _stageChecked = [true, false, false, false];
+  final List<bool> _stageChecked = [false, false, false, false];
   final List<String> _selectedStage = [];
   bool _passwordVisible = false;
 
@@ -136,8 +143,8 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
               Text('Investment Interest'),
               Row(
                 children: [
-                  CheckboxListTile(
-                    title: Text('Funding'),
+                  Checkbox(
+                    tristate: false,
                     value: _assistanceChecked[0],
                     onChanged: (value) {
                       setState(() {
@@ -149,13 +156,14 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                         }
                       });
                     },
-                  )
+                  ),
+                  Text('Funding')
                 ],
               ),
               Row(
                 children: [
-                  CheckboxListTile(
-                    title: Text('Mentoring'),
+                  Checkbox(
+                    tristate: false,
                     value: _assistanceChecked[1],
                     onChanged: (value) {
                       setState(() {
@@ -167,13 +175,14 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                         }
                       });
                     },
-                  )
+                  ),
+                  Text('Mentoring')
                 ],
               ),
               Row(
                 children: [
-                  CheckboxListTile(
-                    title: Text('Legal Assistance'),
+                  Checkbox(
+                    tristate: false,
                     value: _assistanceChecked[2],
                     onChanged: (value) {
                       setState(() {
@@ -185,13 +194,14 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                         }
                       });
                     },
-                  )
+                  ),
+                  Text('Legal Assistance')
                 ],
               ),
               Row(
                 children: [
-                  CheckboxListTile(
-                    title: Text('Other'),
+                  Checkbox(
+                    tristate: false,
                     value: _assistanceChecked[3],
                     onChanged: (value) {
                       setState(() {
@@ -204,6 +214,7 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                       });
                     },
                   ),
+                  Text('Other')
                 ],
               ),
               // if (_investor.interest == 'other')
@@ -226,8 +237,8 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
               Text('Investment Stage'),
               Row(
                 children: [
-                  CheckboxListTile(
-                    title: Text('Seed'),
+                  Checkbox(
+                    tristate: false,
                     value: _stageChecked[0],
                     onChanged: (value) {
                       setState(() {
@@ -239,13 +250,14 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                         }
                       });
                     },
-                  )
+                  ),
+                  Text('Seed')
                 ],
               ),
               Row(
                 children: [
-                  CheckboxListTile(
-                    title: Text('Early-Stage'),
+                  Checkbox(
+                    tristate: false,
                     value: _stageChecked[1],
                     onChanged: (value) {
                       setState(() {
@@ -257,13 +269,14 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                         }
                       });
                     },
-                  )
+                  ),
+                  Text('Early-Stage')
                 ],
               ),
               Row(
                 children: [
-                  CheckboxListTile(
-                    title: Text('Growth'),
+                  Checkbox(
+                    tristate: false,
                     value: _stageChecked[2],
                     onChanged: (value) {
                       setState(() {
@@ -275,13 +288,14 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                         }
                       });
                     },
-                  )
+                  ),
+                  Text('Growth')
                 ],
               ),
               Row(
                 children: [
-                  CheckboxListTile(
-                    title: Text('Late-Stage'),
+                  Checkbox(
+                    tristate: false,
                     value: _stageChecked[3],
                     onChanged: (value) {
                       setState(() {
@@ -293,7 +307,8 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
                         }
                       });
                     },
-                  )
+                  ),
+                  Text('Late-Stage')
                 ],
               ),
               SizedBox(height: 16.0),
@@ -342,6 +357,8 @@ class app extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CreateInvestorAccountPage();
+    return MaterialApp(
+      home: CreateInvestorAccountPage(),
+    );
   }
 }
