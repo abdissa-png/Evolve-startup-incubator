@@ -9,6 +9,13 @@ class NotificationsWidget extends StatefulWidget {
   _NotificationsWidgetState createState() => _NotificationsWidgetState();
 }
 
+class NotificationsWidget extends StatefulWidget {
+  const NotificationsWidget({Key? key}) : super(key: key);
+
+  @override
+  _NotificationsWidgetState createState() => _NotificationsWidgetState();
+}
+
 class _NotificationsWidgetState extends State<NotificationsWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -57,6 +64,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisSize: MainAxisSize.max,
@@ -70,6 +78,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                   ),
                 ],
               ),
+              SizedBox(height: 40,),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                 child: Container(
