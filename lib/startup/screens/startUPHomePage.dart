@@ -1,6 +1,10 @@
+import 'package:practice_flutter/models/startUpProfileModel.dart';
 import 'package:flutter/material.dart';
 
 import '../models/startUphomepagemodel.dart';
+
+
+
 
 class StartUpHomePageWidget extends StatefulWidget {
   const StartUpHomePageWidget({Key? key}) : super(key: key);
@@ -28,7 +32,9 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
       key: scaffoldKey,
       backgroundColor: Colors.white,
       drawer: Drawer(
+        
         elevation: 16,
+         child: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 150, 0, 0),
           child: Column(
@@ -133,6 +139,7 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
             ],
           ),
         ),
+         ),
       ),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(80),
@@ -140,7 +147,7 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
           leading: IconButton(
             icon: Icon(Icons.menu),
             onPressed: () {
-              // TODO: Add logic to open drawer
+            
               scaffoldKey.currentState!.openDrawer();
             },
           ),
@@ -167,7 +174,7 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
                         color: Colors.black,
                       ),
                       onPressed: () {
-                        print('IconButton pressed ...');
+                       
                       },
                     ),
                   ],
@@ -181,7 +188,7 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
                         color: Colors.black,
                       ),
                       onPressed: () {
-                        print('IconButton pressed ...');
+                       
                       },
                     ),
                   ],
@@ -231,11 +238,37 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 ListTile(
-                                  title: Text(
-                                    'investor 1',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                  title: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'investor 1',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.edit,
+                                          color: Colors.black,
+                                        ),
+                                        onPressed: () {
+                                          // TODO: Add edit functionality
+                                         
+                                        },
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        ),
+                                        onPressed: () {
+                                          // TODO: Add delete functionality
+                                         
+                                        },
+                                      ),
+                                    ],
                                   ),
                                   subtitle: Text(
                                     'Accepted',
@@ -247,11 +280,37 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
                                   dense: false,
                                 ),
                                 ListTile(
-                                  title: Text(
-                                    'investor 2',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                  title: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'investor 2',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.edit,
+                                          color: Colors.black,
+                                        ),
+                                        onPressed: () {
+                                          // TODO: Add edit functionality
+                                         
+                                        },
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        ),
+                                        onPressed: () {
+                                          // TODO: Add delete functionality
+                                         
+                                        },
+                                      ),
+                                    ],
                                   ),
                                   subtitle: Text(
                                     'Accepted',
@@ -263,11 +322,37 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
                                   dense: false,
                                 ),
                                 ListTile(
-                                  title: Text(
-                                    'insvestor 3',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                  title: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'investor 3',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.edit,
+                                          color: Colors.black,
+                                        ),
+                                        onPressed: () {
+                                          // TODO: Add edit functionality
+                                         
+                                        },
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        ),
+                                        onPressed: () {
+                                          // TODO: Add delete functionality
+                                         
+                                        },
+                                      ),
+                                    ],
                                   ),
                                   subtitle: Text(
                                     'Accepted',
@@ -286,11 +371,36 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 ListTile(
-                                  title: Text(
-                                    'investor 1',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                  title: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'investor 1',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.edit,
+                                          color: Colors.black,
+                                        ),
+                                        onPressed: () {
+                                          
+                                          
+                                        },
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        ),
+                                        onPressed: () {
+                                        
+                                        },
+                                      ),
+                                    ],
                                   ),
                                   subtitle: Text(
                                     'pending',
@@ -302,11 +412,35 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
                                   dense: false,
                                 ),
                                 ListTile(
-                                  title: Text(
-                                    'investor 2',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                  title: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'investor 2',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.edit,
+                                          color: Colors.black,
+                                        ),
+                                        onPressed: () {
+                                         
+                                        },
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        ),
+                                        onPressed: () {
+                                        
+                                        },
+                                      ),
+                                    ],
                                   ),
                                   subtitle: Text(
                                     'pending',
@@ -318,11 +452,37 @@ class _StartUpHomePageWidgetState extends State<StartUpHomePageWidget> {
                                   dense: false,
                                 ),
                                 ListTile(
-                                  title: Text(
-                                    'investor 3',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
+                                  title: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'investor 3',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.edit,
+                                          color: Colors.black,
+                                        ),
+                                        onPressed: () {
+                                          // TODO: Add edit functionality
+                                          print('Edit pressed ...');
+                                        },
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          Icons.delete,
+                                          color: Colors.red,
+                                        ),
+                                        onPressed: () {
+                                          // TODO: Add delete functionality
+                                          print('Delete pressed ...');
+                                        },
+                                      ),
+                                    ],
                                   ),
                                   subtitle: Text(
                                     'pending',
