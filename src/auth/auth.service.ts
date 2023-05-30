@@ -105,7 +105,7 @@ export class AuthService {
         if(!rtMatches) throw new HttpException("Access Denied!",HttpStatus.FORBIDDEN);
         const tokens=await this.getTokens(user.id,user.email,user.role.role)
         await this.updateRtHash(user.id,tokens.refresh_token)
-        return tokens;
+        return [user.role.role,tokens];
     }
     async startupSignup(dto:StartupDto){
         const hash=await this.hashData(dto.password)

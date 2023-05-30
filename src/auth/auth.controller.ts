@@ -11,6 +11,7 @@ import { AdminDto } from './dto/admin.dto';
 import { RolesGuard } from 'src/common/guards/roles.guard';
 import { UserRole } from 'src/common/roles/user.role';
 import { Roles } from 'src/common/decorators/roles.decorator';
+import { RtGuard } from 'src/common/guards/rt.guard';
 
 @Controller('api/v1/auth')
 export class AuthController {
@@ -82,4 +83,14 @@ export class AuthController {
     async removeUser(@Body("email") email:string,@Body("role") role:string){
         return this.authService.removeUser(email,role)
     }
+    @Public()
+    @UseGuards(RtGuard)
+    @Post('refresh')
+    @HttpCode(HttpStatus.OK)
+    async refreshTokens(
+        @GetCurrentUserId() userId: number,
+        @GetCurrentUser('refreshToken') refreshToken: string
+      ){
+        return this.authService.refreshTokens(userId,refreshToken);
+      }
 }
