@@ -72,8 +72,8 @@ export class AuthController {
     }
     @Roles(UserRole.ADMIN)
     @UseGuards(RolesGuard)
-    @Get("search/user")
-    async searchUser(@Body("name") name:string){
+    @Get("search/user:name")
+    async searchUser(@Param("name") name:string){
         return this.authService.searchUser(name)
     }
     @Roles(UserRole.ADMIN)

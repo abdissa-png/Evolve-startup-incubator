@@ -30,7 +30,7 @@ export class MessageController {
     @Roles(UserRole.ADMIN)
     @UseGuards(RolesGuard)
     @Post("reply/complaint")
-    async receiveComplaint(@Body() dto:ComplaintDto){
+    async replyToComplaint(@Body() dto:ComplaintDto){
         this.messageService.replyToComplaint(dto)
     }
     @Roles(UserRole.INVESTOR,UserRole.STARTUP)
