@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Get, HttpCode, HttpStatus, Patch, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus,Param, Patch, UseGuards } from '@nestjs/common';
 import { GetCurrentUser } from 'src/common/decorators/get-current-user.decorator';
 import { InvestorService } from './investor.service';
 import { InvestorProfileDto } from './dto/profile.dto';
