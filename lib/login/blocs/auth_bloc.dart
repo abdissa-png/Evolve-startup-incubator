@@ -7,9 +7,20 @@ import 'blocs.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
   AuthBloc({required this.authRepository}) : super(UnknownAuthState()) {
-    on<AuthStartedEvent>(
+    on<AuthStarted>(
       (event, emit) async {
-        emit(AuthenticationLoading());
+        final bool hasToken = await authRepository.hasToken();
+        if (hasToken) {
+          final authModel = await authRepository.fetchToken();
+          emit(AuthenticatedAuthState(authModel));
+        } else {
+          emit(AuthRegisterState());
+        }
+      },
+    );
+    on<AuthLogin>(
+      (event, emit) async {
+        emit(AuthenticationLoadingState());
         try {
           AuthModel result = await authRepository.login(event.login);
           emit(AuthenticatedAuthState(result));
@@ -20,7 +31,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
     on<AuthStartupSignUp>(
       (event, emit) async {
-        emit(AuthenticationLoading());
+        emit(AuthenticationLoadingState());
         try {
           AuthModel result = await authRepository.startupSignup(event.startup);
           emit(AuthenticatedAuthState(result));
@@ -31,7 +42,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
     on<AuthInvestorSignUp>(
       (event, emit) async {
-        emit(AuthenticationLoading());
+        emit(AuthenticationLoadingState());
         try {
           AuthModel result =
               await authRepository.investorSignup(event.investor);
@@ -42,10 +53,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       },
     );
     on<AuthLogoutRequested>((event, emit) async {
-      bool result = await authRepository.logout(event.auth);
-      emit(UnknownAuthState());
+      try {
+        bool result = await authRepository.logout();
+        emit(UnknownAuthState());
+      } catch (error) {
+        emit(UnauthenticatedAuthState(error));
+      }
     });
-    on<AuthUnauthenticatedEvent>((event, emit) async {
+    on<AuthUnauthenticated>((event, emit) async {
       emit(UnauthenticatedAuthState(event.error));
     });
   }

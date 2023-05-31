@@ -16,6 +16,7 @@ import 'login/data_providers/Auth_Data_Provider.dart';
 import 'package:flutter/material.dart';
 
 import 'login/repository/Auth_repository.dart';
+import 'login/screens/welcome.dart';
 
 void main() {
   runApp(MainApp());
@@ -24,7 +25,8 @@ void main() {
 class MainApp extends StatelessWidget {
   final authBloc = AuthBloc(authRepository: AuthRepository(AuthDataProvider()));
   final _router = GoRouter(routes: [
-    GoRoute(path: '/', builder: (context, state) => LoginPage()),
+    GoRoute(path: '/', builder: (context, state) => WelcomePage()),
+    GoRoute(path: '/login', builder: (context, state) => LoginPage()),
     GoRoute(
       path: '/createAccount',
       builder: (context, state) => CreateAccountPage(),
@@ -67,9 +69,6 @@ class MainApp extends StatelessWidget {
     return BlocProvider.value(
         value: authBloc,
         child: MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          routerDelegate: _router.routerDelegate,
-          routeInformationParser: _router.routeInformationParser,
-        ));
+            debugShowCheckedModeBanner: false, routerConfig: _router));
   }
 }

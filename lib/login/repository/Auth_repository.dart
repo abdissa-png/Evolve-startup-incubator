@@ -20,7 +20,25 @@ class AuthRepository {
     return authDataProvider.investorSignup(investor.toJson());
   }
 
-  Future<bool> logout(AuthModel auth) async {
-    return authDataProvider.logout(auth.authToken);
+  Future<bool> logout() async {
+    return authDataProvider.logout();
+  }
+
+  Future<bool> hasToken() async {
+    try {
+      AuthModel tokens = await authDataProvider.fetchToken();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<AuthModel> fetchToken() async {
+    try {
+      final authModel = authDataProvider.fetchToken();
+      return authModel;
+    } catch (e) {
+      throw Exception("Tokens doesnot exist");
+    }
   }
 }

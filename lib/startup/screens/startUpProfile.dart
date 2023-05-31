@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practice_flutter/models/startUpProfileModel.dart';
-
+import '../models/startUpProfileModel.dart';
 
 void main() {
   runApp(MyApp());
@@ -208,12 +207,11 @@ class _CreateStartupAccountPageState extends State<CreateStartupAccountPage> {
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                       
-                      }
+                      if (_formKey.currentState!.validate()) {}
                     },
                     style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
+                      padding: EdgeInsets.symmetric(
+                          vertical: 16.0, horizontal: 32.0),
                       textStyle: TextStyle(fontSize: 18.0),
                     ),
                     child: Text('Create Account'),

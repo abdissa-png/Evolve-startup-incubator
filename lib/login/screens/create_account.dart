@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CreateAccountPage extends StatefulWidget {
   @override
@@ -12,9 +13,9 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
 
   void _navigateToAccountCreationPage() {
     if (_accountType == 0) {
-      // Navigator.pushNamed(context, '/createStartupAccount');
+      context.go("/signup/startup");
     } else {
-      // Navigator.pushNamed(context, '/createInvestorAccount');
+      context.go("/signup/investor");
     }
   }
 
@@ -22,6 +23,12 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            context.go("/login");
+          },
+        ),
         title: Text('Create Account'),
         backgroundColor: Colors.purple[900],
       ),

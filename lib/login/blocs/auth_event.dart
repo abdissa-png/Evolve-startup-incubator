@@ -12,30 +12,28 @@ class AuthEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class AuthStartedEvent extends AuthEvent {
+class AuthStarted extends AuthEvent {}
+
+class AuthLogin extends AuthEvent {
   final LoginModel login;
 
-  AuthStartedEvent(this.login);
+  AuthLogin(this.login);
 
   @override
   List<Object?> get props => [login];
 }
 
-class AuthUnauthenticatedEvent extends AuthEvent {
+class AuthUnauthenticated extends AuthEvent {
   final Object error;
 
-  AuthUnauthenticatedEvent(this.error);
+  AuthUnauthenticated(this.error);
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [error];
 }
 
 class AuthLogoutRequested extends AuthEvent {
-  final AuthModel auth;
-
-  const AuthLogoutRequested(this.auth);
-
   @override
-  List<Object?> get props => [auth];
+  List<Object?> get props => [];
 }
 
 class AuthStartupSignUp extends AuthEvent {

@@ -10,9 +10,20 @@ abstract class AuthState extends Equatable {
   List<Object> get props => [];
 }
 
-class UnknownAuthState extends AuthState {}
+class UnknownAuthState extends AuthState {
+  @override
+  List<Object> get props => [];
+}
 
-class AuthenticationLoading extends AuthState {}
+class AuthRegisterState extends AuthState {
+  @override
+  List<Object> get props => [];
+}
+
+class AuthenticationLoadingState extends AuthState {
+  @override
+  List<Object> get props => [];
+}
 
 class AuthenticatedAuthState extends AuthState {
   final AuthModel auth;
