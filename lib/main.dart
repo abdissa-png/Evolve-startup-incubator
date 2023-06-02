@@ -3,6 +3,12 @@ import 'package:evolve/startup/screens/startUPHomePage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import 'investor/screens/editAccount.dart';
+import 'investor/screens/investorProfile.dart';
+import 'investor/screens/notification.dart';
+import 'investor/screens/pairedupStartUps.dart';
+import 'investor/screens/searchStartUps.dart';
+import 'investor/screens/submitComplaints.dart';
 import 'login/blocs/auth_bloc.dart';
 import 'login/data_providers/Auth_Data_Provider.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +63,31 @@ class MainApp extends StatelessWidget {
     GoRoute(
       path: '/investor',
       builder: (context, state) => InvestorhomepageWidget(),
-    )
+    ),
+    GoRoute(
+      path: "/investor/profile",
+      builder: (context, state) => InvestorProfileWidget(),
+    ),
+    GoRoute(
+      path: "/investor/editAccount",
+      builder: (context, state) => InvestorEditAccountWidget(),
+    ),
+    GoRoute(
+      path: "/investor/notifications",
+      builder: (context, state) => InvestorNotificationWidget(),
+    ),
+    GoRoute(
+      path: "/investor/pairedStartups",
+      builder: (context, state) => InvestorPairedupStartupsWidget(),
+    ),
+    GoRoute(
+      path: "/investor/searchStartups",
+      builder: (context, state) => SearchStartups(),
+    ),
+    GoRoute(
+      path: "/investor/submitComplaints",
+      builder: (context, state) => InvestorSubmitcomplaintWidget(),
+    ),
   ]);
   MainApp({super.key});
 
