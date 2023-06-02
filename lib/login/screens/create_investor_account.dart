@@ -46,8 +46,14 @@ class _CreateInvestorAccountPageState extends State<CreateInvestorAccountPage> {
       body: BlocConsumer<AuthBloc, AuthState>(builder: (_, state) {
         if (state is AuthenticationLoadingState) {
           return const Center(
-              child: CircularProgressIndicator(
-            backgroundColor: Colors.blue,
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(
+                backgroundColor: Colors.blue,
+              ),
+              Text("Loading...")
+            ],
           ));
         } else {
           return SingleChildScrollView(

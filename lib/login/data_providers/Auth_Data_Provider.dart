@@ -54,21 +54,19 @@ class AuthDataProvider {
   }
 
   Future<AuthModel> login(Map<String, String> login) async {
-      final response = await http
-          .post(Uri.parse('$_baseUrl/login'),
-              headers: <String, String>{
-                'Content-Type': 'application/json; charset=UTF-8',
-              },
-              body: jsonEncode(login));
-      if (response.statusCode == 200) {
-        List<dynamic> body = jsonDecode(response.body);
-        persistToken(
-            body[0], body[1]['access_token'], body[1]['refresh_token']);
-        return AuthModel.fromJson(body);
-      } else {
-        print(response.body);
-        throw Exception("Failed to login");
-      }
+    final response = await http.post(Uri.parse('$_baseUrl/login'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(login));
+    if (response.statusCode == 200) {
+      List<dynamic> body = jsonDecode(response.body);
+      persistToken(body[0], body[1]['access_token'], body[1]['refresh_token']);
+      return AuthModel.fromJson(body);
+    } else {
+      var res = jsonDecode(response.body);
+      throw Exception(res['message']);
+    }
   }
 
   Future<AuthModel> startupSignup(Map<String, dynamic> startup) async {
@@ -83,7 +81,8 @@ class AuthDataProvider {
       persistToken(body[0], body[1]['access_token'], body[1]['refresh_token']);
       return AuthModel.fromJson(body);
     } else {
-      throw Exception("Failed to register Startup");
+      var res = jsonDecode(response.body);
+      throw Exception(res['message']);
     }
   }
 
@@ -99,7 +98,8 @@ class AuthDataProvider {
       persistToken(body[0], body[1]['access_token'], body[1]['refresh_token']);
       return AuthModel.fromJson(body);
     } else {
-      throw Exception("Failed to register Investor");
+      var res = jsonDecode(response.body);
+      throw Exception(res['message']);
     }
   }
 
@@ -115,7 +115,8 @@ class AuthDataProvider {
     if (response.statusCode == 200) {
       return response.body as bool;
     } else {
-      throw Exception("Failed to logout");
+      var res = jsonDecode(response.body);
+      throw Exception(res['message']);
     }
   }
 }

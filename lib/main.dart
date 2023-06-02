@@ -1,12 +1,4 @@
-import 'package:evolve/admin/screens/adminHomePage.dart';
-import 'package:evolve/admin/screens/createPost.dart';
-import 'package:evolve/admin/screens/removeuser.dart';
-import 'package:evolve/admin/screens/viewComplaints.dart';
 import 'package:evolve/investor/screens/investorhomepage.dart';
-import 'package:evolve/login/screens/create_account.dart';
-import 'package:evolve/login/screens/create_investor_account.dart';
-import 'package:evolve/login/screens/create_startup_account.dart';
-import 'package:evolve/login/screens/login.dart';
 import 'package:evolve/startup/screens/startUPHomePage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -16,7 +8,8 @@ import 'login/data_providers/Auth_Data_Provider.dart';
 import 'package:flutter/material.dart';
 
 import 'login/repository/Auth_repository.dart';
-import 'login/screens/welcome.dart';
+import 'login/screens/screens.dart';
+import 'package:evolve/admin/screens/screens.dart';
 
 void main() {
   runApp(MainApp());
@@ -25,7 +18,10 @@ void main() {
 class MainApp extends StatelessWidget {
   final authBloc = AuthBloc(authRepository: AuthRepository(AuthDataProvider()));
   final _router = GoRouter(routes: [
-    GoRoute(path: '/', builder: (context, state) => WelcomePage()),
+    GoRoute(
+      path: '/',
+      builder: (context, state) => WelcomePage(),
+    ),
     GoRoute(path: '/login', builder: (context, state) => LoginPage()),
     GoRoute(
       path: '/createAccount',
@@ -44,8 +40,9 @@ class MainApp extends StatelessWidget {
       builder: (context, state) => AdminHomePage(),
     ),
     GoRoute(
-      path: '/admin/announcement',
-      builder: (context, state) => CreatePost(),
+      path: '/admin/createPost/:email',
+      builder: (context, state) =>
+          CreatePost(email: state.pathParameters['email']!),
     ),
     GoRoute(
         path: '/admin/removeUser', builder: (context, state) => RemoveUser()),

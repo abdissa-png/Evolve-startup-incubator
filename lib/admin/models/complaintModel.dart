@@ -1,5 +1,5 @@
-class Complaint {
-  String userName;
+class ComplaintModel {
+  String email;
   String message;
-  Complaint({required this.userName, required this.message});
+  ComplaintModel({required this.email, required this.message});
 }

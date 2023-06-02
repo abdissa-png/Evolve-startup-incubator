@@ -1,4 +1,4 @@
-class Post {
+class PostModel {
   final String message;
-  Post({required this.message});
+  PostModel({required this.message});
 }

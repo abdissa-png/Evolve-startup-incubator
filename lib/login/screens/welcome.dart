@@ -60,8 +60,14 @@ class _WelcomePageState extends State<WelcomePage> {
             );
           } else {
             return const Center(
-                child: CircularProgressIndicator(
-              backgroundColor: Colors.blue,
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(
+                  backgroundColor: Colors.blue,
+                ),
+                Text("Loading...")
+              ],
             ));
           }
         },
